@@ -66,7 +66,7 @@ export interface InsightArticle {
   essayNumber: string;
   excerpt: string;
   body: string[];
-  publishedDate: string;
+  publishedDate?: string;
   readTime: string;
   tags: string[];
 }

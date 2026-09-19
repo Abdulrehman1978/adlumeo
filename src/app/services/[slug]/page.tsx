@@ -69,7 +69,7 @@ export default function ServiceDetailPage({ params }: Props) {
         deliverables: [
           "Full Advantage+ Shopping and Lead Generation setup",
           "Server-side Meta Conversions API (CAPI) pixel installation",
-          "Weekly creative variant refreshes (hooks, audio stems, video cuts)",
+          "Regular creative variant refreshes (hooks, audio stems, video cuts)",
           "Audience segmentation (Cold Acquisition, Warm Retargeting)",
           "Direct account ownership — client pays Meta ad spend directly with zero agency markup",
         ],
@@ -162,7 +162,7 @@ export default function ServiceDetailPage({ params }: Props) {
             TRANSPARENT BILLING COMMITMENT
           </span>
           <p className="font-body-sm text-sm text-on-surface-variant leading-relaxed">
-            Advertising media spend is paid directly to platforms (Meta, Google, LinkedIn) through your own ad accounts. ADLUMEO charges a fixed management fee for strategy, creative production, and execution — zero markup, zero hidden commissions, and you retain full account ownership.
+            Advertising media spend is paid directly to platforms (Meta, Google, LinkedIn) through your own ad accounts. ADLUMEO charges only for agreed scope (strategy, creative production, and management) — zero markup, zero hidden commissions, and you retain full account ownership.
           </p>
         </div>
 

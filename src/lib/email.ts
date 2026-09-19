@@ -14,6 +14,18 @@ export type EmailSendResult = {
   error?: string;
 };
 
+export function getNotificationStatus(result: EmailSendResult): "sent" | "skipped" | "failed" {
+  if (result.success) return "sent";
+  if (
+    result.error === "EMAIL_NOT_CONFIGURED" ||
+    result.error === "EMAIL_FROM_NOT_CONFIGURED" ||
+    result.error === "LEAD_NOTIFICATION_EMAIL_NOT_CONFIGURED"
+  ) {
+    return "skipped";
+  }
+  return "failed";
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Core Email Dispatcher
 // ─────────────────────────────────────────────────────────────────────────────

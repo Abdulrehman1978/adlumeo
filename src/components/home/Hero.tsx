@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 
 interface HeroProps {
   heroVideo?: {
@@ -276,15 +277,17 @@ export default function Hero({ heroVideo }: HeroProps) {
           </span>
         </div>
 
-        <div className="flex items-center gap-3 text-on-surface-variant">
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full bg-primary-container opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 bg-primary-container"></span>
-          </span>
-          <span>
-            STUDIO STATUS: <strong className="text-primary-container font-semibold">ACCEPTING CLIENT BRIEFINGS</strong>
-          </span>
-        </div>
+        {siteConfig.acceptingClients && (
+          <div className="flex items-center gap-3 text-on-surface-variant">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full bg-primary-container opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 bg-primary-container"></span>
+            </span>
+            <span>
+              STUDIO STATUS: <strong className="text-primary-container font-semibold">ACCEPTING CLIENT BRIEFINGS</strong>
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -2,15 +2,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { contactFormSchema } from "@/lib/validation";
 import { rateLimiter } from "@/lib/rate-limit";
-import { sendLeadNotifications } from "@/lib/email";
-import { validateServerEnv } from "@/lib/env";
+import { sendLeadNotifications, getNotificationStatus } from "@/lib/email";
+import { validateServerEnv, serverEnv } from "@/lib/env";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    // 0. Validate server environment (logs warnings/errors gracefully)
-    validateServerEnv();
+    // 0. Validate server environment: block production with 503 if critical storage is unconfigured
+    const envStatus = validateServerEnv();
+    if (serverEnv.isProduction && !envStatus.valid) {
+      return NextResponse.json(
+        {
+          error:
+            "Lead capture service is temporarily unavailable due to missing storage configuration. Please contact us directly or try again later.",
+        },
+        { status: 503 }
+      );
+    }
 
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
@@ -77,17 +86,8 @@ export async function POST(req: NextRequest) {
       });
 
       if (notificationResult) {
-        const internalStatus = notificationResult.internal.success
-          ? "sent"
-          : notificationResult.internal.error === "EMAIL_NOT_CONFIGURED"
-          ? "skipped"
-          : "failed";
-
-        const clientStatus = notificationResult.client.success
-          ? "sent"
-          : notificationResult.client.error === "EMAIL_NOT_CONFIGURED"
-          ? "skipped"
-          : "failed";
+        const internalStatus = getNotificationStatus(notificationResult.internal);
+        const clientStatus = getNotificationStatus(notificationResult.client);
 
         await db.lead.update({
           where: { id: lead.id },
@@ -102,6 +102,21 @@ export async function POST(req: NextRequest) {
       }
     } catch (notifErr) {
       console.error("[CONTACT NOTIFICATION DISPATCH ERROR]", notifErr);
+      try {
+        const errMsg = notifErr instanceof Error ? notifErr.message : "Unexpected notification dispatch error";
+        await db.lead.update({
+          where: { id: lead.id },
+          data: {
+            notificationInternalStatus: "failed",
+            notificationInternalError: errMsg,
+            notificationClientStatus: "failed",
+            notificationClientError: errMsg,
+            notificationAttemptedAt: new Date(),
+          },
+        });
+      } catch (updateErr) {
+        console.error("[CONTACT LEAD STATUS UPDATE ON ERROR FAILED]", updateErr);
+      }
     }
 
     return NextResponse.json(

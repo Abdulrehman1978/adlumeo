@@ -25,15 +25,19 @@ export function validateServerEnv(): {
 
   // ── REQUIRED in production ─────────────────────────────────────────────────
 
-  if (!process.env.DATABASE_URL) {
+  const isSqliteOrMissing =
+    !process.env.DATABASE_URL ||
+    (isProduction && process.env.DATABASE_URL.startsWith("file:"));
+
+  if (isSqliteOrMissing) {
     const msg =
-      "[ADLUMEO][CRITICAL] DATABASE_URL is not set. " +
-      "Lead persistence is BROKEN. For production on Vercel, change Prisma provider to 'postgresql', " +
+      "[ADLUMEO][CRITICAL] Persistent PostgreSQL DATABASE_URL is not configured. " +
+      "For production on Vercel, change Prisma provider to 'postgresql' in schema.prisma, " +
       "set a PostgreSQL DATABASE_URL (Supabase / Neon), and run 'npx prisma migrate deploy' before accepting real submissions.";
     if (isProduction) {
       errors.push(msg);
     } else {
-      warnings.push("[ADLUMEO][WARN] DATABASE_URL not set (development — using SQLite fallback).");
+      warnings.push("[ADLUMEO][WARN] Using SQLite fallback for local development.");
     }
   }
 

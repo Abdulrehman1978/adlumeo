@@ -28,18 +28,27 @@ export default function MobileStickyBar() {
       return;
     }
 
+    // If #hero element exists (homepage), watch it with IntersectionObserver
+    const heroEl = document.getElementById("hero");
+    if (heroEl) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          // Show bar only after the hero has actually left the viewport
+          const hasScrolledPast = !entry.isIntersecting && entry.boundingClientRect.top <= 0;
+          setIsVisible(hasScrolledPast);
+        },
+        { threshold: 0 }
+      );
+      observer.observe(heroEl);
+      return () => observer.disconnect();
+    }
+
+    // For non-homepage pages without #hero, reveal after scrolling past header
     const handleScroll = () => {
-      // Reveal sticky bar after scrolling past the initial hero view (~400px)
-      if (window.scrollY > 400) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 250);
     };
 
-    // Initial check
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);

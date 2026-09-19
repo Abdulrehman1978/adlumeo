@@ -43,8 +43,12 @@ export default function ArticleDetail({ params }: Props) {
         <div className="border-b border-white/10 pb-8">
           <div className="flex items-center gap-3 font-label-technical text-xs uppercase tracking-widest text-primary-container mb-4">
             <span>[ESSAY // {article.essayNumber}]</span>
-            <span>•</span>
-            <span>{article.publishedDate}</span>
+            {article.publishedDate && (
+              <>
+                <span>•</span>
+                <span>{article.publishedDate}</span>
+              </>
+            )}
             <span>•</span>
             <span>{article.readTime}</span>
           </div>

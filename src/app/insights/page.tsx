@@ -39,7 +39,8 @@ export default function InsightsPage() {
                   [ESSAY // {article.essayNumber}]
                 </span>
                 <span>
-                  {article.publishedDate} • {article.readTime}
+                  {article.publishedDate ? `${article.publishedDate} • ` : ""}
+                  {article.readTime}
                 </span>
               </div>
 

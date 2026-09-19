@@ -91,7 +91,7 @@ export default function AboutPage() {
             <div className="flex flex-col gap-2 p-4 bg-surface-container border border-white/5">
               <span className="text-xs text-white font-bold uppercase">TRANSPARENT BILLING</span>
               <p className="font-body-md text-sm text-white/90 leading-relaxed font-sans">
-                Fixed management fees. Ad spend paid directly to platforms through your own billing accounts. No markups, no surprises.
+                Clear scope and management fees. Ad spend paid directly to platforms through your own billing accounts. No markups, no surprises.
               </p>
             </div>
             <div className="flex flex-col gap-2 p-4 bg-surface-container border border-white/5">

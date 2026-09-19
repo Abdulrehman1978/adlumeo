@@ -11,26 +11,19 @@
 
 const isDev = process.env.NODE_ENV === "development";
 
-// In development, fall back to localhost. In production, require NEXT_PUBLIC_SITE_URL.
-// Vercel injects NEXT_PUBLIC_VERCEL_URL automatically — use it as a secondary fallback.
+// In development, fall back to localhost:3000.
+// In production, NEXT_PUBLIC_SITE_URL must be explicitly configured.
 const siteUrl = (() => {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
   }
-  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
-    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
-  }
   if (isDev) {
     return "http://localhost:3000";
   }
-  // Return empty string so that downstream consumers can detect misconfiguration.
-  // metadataBase in Next.js accepts a URL — use localhost as last resort to avoid
-  // a build crash, but log a warning.
   if (typeof console !== "undefined") {
-    console.warn(
-      "[ADLUMEO] NEXT_PUBLIC_SITE_URL is not configured. " +
-        "Canonical URLs, OG metadata and sitemap will be incorrect in production. " +
-        "Set NEXT_PUBLIC_SITE_URL in your Vercel environment variables."
+    console.error(
+      "[ADLUMEO][CRITICAL] NEXT_PUBLIC_SITE_URL is not configured in production. " +
+        "Set NEXT_PUBLIC_SITE_URL in your production environment variables."
     );
   }
   return "http://localhost:3000";

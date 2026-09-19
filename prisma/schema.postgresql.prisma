@@ -1,0 +1,31 @@
+// Prisma Schema for ADLUMEO (PostgreSQL / Supabase Production)
+// To use in production: copy or rename to schema.prisma and run prisma generate / prisma db push
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Lead {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  fullName      String
+  businessName  String
+  email         String
+  phone         String?
+  website       String?
+  socialUrl     String?
+  industry      String?
+  marketingGoal String?
+  budgetRange   String?
+  message       String?
+  source        String   @default("free_audit") // "free_audit" | "contact"
+  status        String   @default("new")
+
+  @@index([email])
+  @@index([createdAt])
+}

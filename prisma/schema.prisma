@@ -1,0 +1,29 @@
+// Prisma Schema for ADLUMEO
+// Local development default: sqlite
+// Production: Switch provider to "postgresql" for Supabase / PostgreSQL
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Lead {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  fullName      String
+  businessName  String
+  email         String
+  phone         String?
+  website       String?
+  socialUrl     String?
+  industry      String?
+  marketingGoal String?
+  budgetRange   String?
+  message       String?
+  source        String   @default("free_audit") // "free_audit" | "contact"
+  status        String   @default("new")
+}

@@ -58,29 +58,35 @@ export default function EditorialSection() {
           {/* Magazine Column Text & Vignettes */}
           <div className="lg:col-span-7 flex flex-col justify-between gap-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-serif-editorial">
-              <div className="flex flex-col gap-3 p-4 -m-4 hover:bg-black/[0.03] transition-colors duration-200">
+              <Link href="/insights/why-nobody-watches-your-reels" className="flex flex-col gap-3 p-4 -m-4 hover:bg-black/[0.03] transition-colors duration-200 group">
                 <span className="font-label-technical text-xs uppercase tracking-widest text-black/50">
                   [ESSAY // 01]
                 </span>
-                <h3 className="font-headline-sm text-2xl font-bold text-black uppercase font-display-hero">
-                  The Death of Corporate Politeness
+                <h3 className="font-headline-sm text-2xl font-bold text-black uppercase font-display-hero group-hover:text-[#FF3E24] transition-colors">
+                  Why Nobody Watches Your Reels
                 </h3>
                 <p className="text-base text-black/80 leading-relaxed font-sans">
-                  Audiences are immune to safe, scrubbed corporate communications. They seek tension, kinetic movement, and genuine point of view. When your brand dares to have a recognizable aesthetic syntax, customers no longer evaluate you on price—they buy access to your cultural sphere.
+                  Most business Reels fail in the first two seconds. Modern algorithms measure 3-second retention: if viewers swipe away early, distribution drops immediately. The fix is not more content, but better openings tested systematically.
                 </p>
-              </div>
+                <span className="font-label-technical text-xs text-black font-bold uppercase mt-2 group-hover:translate-x-1 transition-transform inline-block">
+                  Read Article →
+                </span>
+              </Link>
 
-              <div className="flex flex-col gap-3 p-4 -m-4 hover:bg-black/[0.03] transition-colors duration-200">
+              <Link href="/insights/how-organic-content-and-paid-ads-should-work-together" className="flex flex-col gap-3 p-4 -m-4 hover:bg-black/[0.03] transition-colors duration-200 group">
                 <span className="font-label-technical text-xs uppercase tracking-widest text-black/50">
                   [ESSAY // 02]
                 </span>
-                <h3 className="font-headline-sm text-2xl font-bold text-black uppercase font-display-hero">
-                  Retention is the Ultimate Moat
+                <h3 className="font-headline-sm text-2xl font-bold text-black uppercase font-display-hero group-hover:text-[#FF3E24] transition-colors">
+                  Organic &amp; Paid Synergy
                 </h3>
                 <p className="text-base text-black/80 leading-relaxed font-sans">
-                  Every short-form algorithmic system optimizes for one brutal signal: watch completion percentage. By treating 9:16 vertical video as high cinema rather than throwaway social media collateral, ADLUMEO routinely holds high audience retention through the crucial 15-second threshold.
+                  Treating organic content as an ad testing lab lets you validate hook angles and creative before putting ad budget behind them. When both channels share performance intelligence, acquisition costs drop.
                 </p>
-              </div>
+                <span className="font-label-technical text-xs text-black font-bold uppercase mt-2 group-hover:translate-x-1 transition-transform inline-block">
+                  Read Article →
+                </span>
+              </Link>
             </div>
 
             {/* Monogram Pull Quote Box */}

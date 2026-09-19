@@ -36,32 +36,32 @@ export default function ManifestoSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           <div className="md:col-span-4 font-label-technical text-sm font-bold uppercase tracking-wider leading-snug">
-            The era of publishing three polite templates per week is dead. The feed algorithm rewards cinematic friction and punishes mediocrity.
+            The era of publishing polite, repetitive templates is over. The feed rewards creative clarity and ignores mediocrity.
           </div>
           <div className="md:col-span-8 font-body-xl text-xl sm:text-2xl font-medium leading-relaxed">
-            Every second a prospective buyer scrolls past your video without pausing, your customer acquisition cost compounds. We don't produce content to satisfy arbitrary content calendars. We build high-voltage visual hooks that stop thumbs, command cultural authority, and redirect demand into verified enterprise balance sheets.
+            Every second a prospective buyer scrolls past your content without pausing, your opportunity to connect is lost. We don&apos;t produce content just to fill an empty schedule. We create content people actually want to watch, manage your online presence, and run paid campaigns designed to turn attention into leads and sales.
           </div>
         </div>
       </div>
 
       {/* 3 Core Rules / Pillars */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t-2 border-black font-label-technical max-w-7xl mx-auto w-full">
-        <div className="flex flex-col gap-1 p-3 -m-3 hover:bg-black/5 transition-colors duration-200">
-          <span className="text-xs uppercase opacity-70 font-semibold">01 / CREATIVE SHOCK</span>
+        <div className="flex flex-col gap-1.5 p-3 -m-3 hover:bg-black/5 transition-colors duration-200">
+          <span className="text-xs uppercase opacity-75 font-semibold">01 / CREATIVE SHOCK</span>
           <p className="text-base font-bold uppercase">
-            Stop the scroll within 1.2 seconds or forfeit the customer.
+            Content designed to interrupt the scroll and earn attention.
           </p>
         </div>
-        <div className="flex flex-col gap-1 p-3 -m-3 hover:bg-black/5 transition-colors duration-200">
-          <span className="text-xs opacity-70 font-semibold">02 / CULTURAL GRAVITY</span>
+        <div className="flex flex-col gap-1.5 p-3 -m-3 hover:bg-black/5 transition-colors duration-200">
+          <span className="text-xs uppercase opacity-75 font-semibold">02 / CULTURAL GRAVITY</span>
           <p className="text-base font-bold uppercase">
-            Transform social profiles into digital luxury flagship stores.
+            Ideas built around what your audience actually cares about.
           </p>
         </div>
-        <div className="flex flex-col gap-1 p-3 -m-3 hover:bg-black/5 transition-colors duration-200">
-          <span className="text-xs opacity-70 font-semibold">03 / PERFORMANCE HARVEST</span>
+        <div className="flex flex-col gap-1.5 p-3 -m-3 hover:bg-black/5 transition-colors duration-200">
+          <span className="text-xs uppercase opacity-75 font-semibold">03 / PERFORMANCE HARVEST</span>
           <p className="text-base font-bold uppercase">
-            Turn organic viral velocity straight into paid conversion scale.
+            Use organic and paid performance data to improve what gets created next.
           </p>
         </div>
       </div>

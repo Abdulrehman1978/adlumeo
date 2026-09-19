@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AuditFormValues, auditFormSchema } from "@/lib/validation";
 
 export default function AuditForm() {
   const [formData, setFormData] = useState<AuditFormValues>({
-    brand: "",
-    socialUrl: "",
+    fullName: "",
+    businessName: "",
     email: "",
     phone: "",
-    budgetRange: "$5,000 – $15,000 / month",
-    marketingGoal: "",
+    socialUrl: "",
     website: "",
+    industry: "",
+    marketingGoal: "",
     message: "",
     hp_company_field: "",
   });
@@ -46,23 +48,26 @@ export default function AuditForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to transmit audit dossier.");
+        throw new Error(data.error || "Failed to submit audit request.");
       }
 
       setStatusMessage({
         type: "success",
-        message: data.message || "Audit request received. We will review your profile and contact you.",
+        message:
+          data.message ||
+          "We'll review the information you shared and contact you using the details provided.",
       });
 
       // Reset form on success
       setFormData({
-        brand: "",
-        socialUrl: "",
+        fullName: "",
+        businessName: "",
         email: "",
         phone: "",
-        budgetRange: "$5,000 – $15,000 / month",
-        marketingGoal: "",
+        socialUrl: "",
         website: "",
+        industry: "",
+        marketingGoal: "",
         message: "",
         hp_company_field: "",
       });
@@ -78,32 +83,41 @@ export default function AuditForm() {
     <div className="bg-black text-white p-8 sm:p-12 shadow-2xl border border-black relative">
       <div className="flex items-center gap-2 font-label-technical text-xs uppercase tracking-widest text-primary-container mb-3">
         <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-        FREE SOCIAL GROWTH AUDIT DOSSIER
+        ZERO-OBLIGATION REVIEW
       </div>
 
       <h3 className="font-headline-lg text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-2">
-        CLAIM YOUR STRATEGIC TEARDOWN
+        FREE SOCIAL GROWTH AUDIT
       </h3>
 
       <p className="font-body-sm text-on-surface-variant text-sm mb-8">
-        No generic sales presentation. Our creative team records a customized video teardown diagnosing your hook leaks, missed reach, and exact ROAS multipliers.
+        No aggressive sales pitch. We&apos;ll review your current social presence and show you what we&apos;d improve.
       </p>
 
       {statusMessage.type === "success" ? (
-        <div className="p-6 bg-surface-container-high border border-primary-container text-white font-label-technical animate-fadeIn">
-          <div className="flex items-center gap-2 text-primary-container font-bold text-sm uppercase mb-2">
+        <div className="p-8 bg-surface-container-high border border-primary-container text-white font-label-technical animate-fadeIn flex flex-col gap-4">
+          <div className="flex items-center gap-2 text-primary-container font-bold text-base uppercase">
             <span>✓</span>
-            <span>DOSSIER TRANSMITTED SUCCESSFULLY</span>
+            <span>REQUEST RECEIVED.</span>
           </div>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            {statusMessage.message}
+          <p className="font-body-md text-sm text-on-surface-variant leading-relaxed font-sans">
+            We&apos;ll review the information you shared and contact you using the details provided.
           </p>
-          <button
-            onClick={() => setStatusMessage({ type: null, message: "" })}
-            className="mt-4 px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs uppercase font-bold transition-colors"
-          >
-            Submit Another Request
-          </button>
+          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <Link
+              href="/work"
+              className="text-primary-container hover:text-white transition-colors text-xs uppercase font-bold flex items-center gap-1.5"
+            >
+              <span>While you&apos;re here, explore our work</span>
+              <span>→</span>
+            </Link>
+            <button
+              onClick={() => setStatusMessage({ type: null, message: "" })}
+              className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs uppercase font-bold transition-colors"
+            >
+              Submit Another Request
+            </button>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-5" id="conversion-audit-form">
@@ -122,31 +136,31 @@ export default function AuditForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="audit-brand" className="font-label-technical text-xs uppercase text-on-surface-variant">
-                Brand / Company *
+              <label htmlFor="audit-name" className="font-label-technical text-xs uppercase text-on-surface-variant">
+                Your Name *
               </label>
               <input
-                id="audit-brand"
+                id="audit-name"
                 type="text"
                 required
-                placeholder="e.g. Noir Botanics"
-                value={formData.brand}
-                onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                placeholder="e.g. Alex Sharma"
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="audit-social" className="font-label-technical text-xs uppercase text-on-surface-variant">
-                Instagram / Social Link *
+              <label htmlFor="audit-brand" className="font-label-technical text-xs uppercase text-on-surface-variant">
+                Business / Brand Name *
               </label>
               <input
-                id="audit-social"
+                id="audit-brand"
                 type="text"
                 required
-                placeholder="@yourbrand or URL"
-                value={formData.socialUrl}
-                onChange={(e) => setFormData({ ...formData, socialUrl: e.target.value })}
+                placeholder="e.g. Acme Studio"
+                value={formData.businessName}
+                onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                 className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
               />
             </div>
@@ -161,7 +175,7 @@ export default function AuditForm() {
                 id="audit-email"
                 type="email"
                 required
-                placeholder="executive@brand.com"
+                placeholder="alex@acme.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
@@ -170,12 +184,12 @@ export default function AuditForm() {
 
             <div className="flex flex-col gap-1.5">
               <label htmlFor="audit-phone" className="font-label-technical text-xs uppercase text-on-surface-variant">
-                Direct WhatsApp / Mobile
+                WhatsApp / Phone (Optional)
               </label>
               <input
                 id="audit-phone"
                 type="tel"
-                placeholder="+1 (555) 000-0000"
+                placeholder="+91 98765 43210"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
@@ -183,21 +197,84 @@ export default function AuditForm() {
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="audit-social" className="font-label-technical text-xs uppercase text-on-surface-variant">
+                Instagram / Primary Social Profile *
+              </label>
+              <input
+                id="audit-social"
+                type="text"
+                required
+                placeholder="@yourbrand or URL"
+                value={formData.socialUrl}
+                onChange={(e) => setFormData({ ...formData, socialUrl: e.target.value })}
+                className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="audit-website" className="font-label-technical text-xs uppercase text-on-surface-variant">
+                Website URL (Optional)
+              </label>
+              <input
+                id="audit-website"
+                type="url"
+                placeholder="https://yourbrand.com"
+                value={formData.website}
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="audit-industry" className="font-label-technical text-xs uppercase text-on-surface-variant">
+                Industry / Sector (Optional)
+              </label>
+              <input
+                id="audit-industry"
+                type="text"
+                placeholder="e.g. D2C, Hospitality, Healthcare, Real Estate"
+                value={formData.industry}
+                onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+                className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="audit-goal" className="font-label-technical text-xs uppercase text-on-surface-variant">
+                Primary Goal (Optional)
+              </label>
+              <select
+                id="audit-goal"
+                value={formData.marketingGoal}
+                onChange={(e) => setFormData({ ...formData, marketingGoal: e.target.value })}
+                className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200 cursor-pointer"
+              >
+                <option value="">Select primary goal (Optional)</option>
+                <option value="Grow audience & brand attention">Grow audience &amp; brand attention</option>
+                <option value="Generate qualified leads">Generate qualified leads</option>
+                <option value="Scale paid ad performance">Scale paid ad performance</option>
+                <option value="Improve content & video quality">Improve content &amp; video quality</option>
+                <option value="Complete social media management">Complete social media management</option>
+              </select>
+            </div>
+          </div>
+
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="audit-budget" className="font-label-technical text-xs uppercase text-on-surface-variant">
-              Monthly Ad / Marketing Budget
+            <label htmlFor="audit-message" className="font-label-technical text-xs uppercase text-on-surface-variant">
+              Anything Specific to Review? (Optional)
             </label>
-            <select
-              id="audit-budget"
-              value={formData.budgetRange}
-              onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
-              className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200 cursor-pointer"
-            >
-              <option value="$5,000 – $15,000 / month">$5,000 – $15,000 / month</option>
-              <option value="$15,000 – $50,000 / month">$15,000 – $50,000 / month</option>
-              <option value="$50,000+ / month (Enterprise)">$50,000+ / month (Enterprise)</option>
-              <option value="Organic Creative Focus">Organic Creative Focus</option>
-            </select>
+            <textarea
+              id="audit-message"
+              rows={3}
+              placeholder="Tell us about current bottlenecks, what you've tried, or your target timeline..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="px-4 py-3 bg-surface-container-high text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border border-white/10 transition-all duration-200"
+            />
           </div>
 
           {statusMessage.type === "error" && (
@@ -212,14 +289,14 @@ export default function AuditForm() {
             className="w-full py-4 bg-primary-container text-black font-label-technical text-sm font-bold uppercase tracking-widest hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_rgba(204,255,0,0.4)] hover:shadow-[0_0_40px_rgba(204,255,0,0.7)] flex items-center justify-center gap-2 mt-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span>
-              {isSubmitting ? "TRANSMITTING DOSSIER TO WAR ROOM..." : "TRANSMIT AUDIT DOSSIER"}
+              {isSubmitting ? "SUBMITTING REQUEST..." : "GET MY FREE AUDIT"}
             </span>
             <span className="text-lg group-hover:rotate-12 transition-transform duration-300">⚡</span>
           </button>
 
-          <div className="flex items-center justify-between text-on-surface-variant font-label-technical text-[11px] pt-2">
-            <span>🔒 Strictly Confidential NDA Protected</span>
-            <span>⚡ Strategic Loom Review Dispatched</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-on-surface-variant font-label-technical text-[11px] pt-2">
+            <span>Your information is only used to respond to your enquiry.</span>
+            <span>🔒 Confidential. Formal NDAs can be arranged where required.</span>
           </div>
         </form>
       )}

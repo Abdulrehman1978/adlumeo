@@ -37,18 +37,18 @@ export default function CaseStudyNoir() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30"></div>
               
               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur border border-[#E59858]/50 px-3 py-1 font-label-technical text-xs uppercase text-[#E59858] z-10">
-                SCROLL-TO-SALE PIPELINE CONCEPT
+                CREATIVE STRATEGY STUDY
               </div>
 
               {/* ROAS Target Floating Pill */}
-              <div className="absolute bottom-6 right-6 bg-black/90 backdrop-blur border border-primary-container px-4 py-3 flex items-center gap-3 animate-pulse-glow z-10">
-                <div className="w-3 h-3 bg-primary-container animate-ping"></div>
+              <div className="absolute bottom-6 right-6 bg-black/90 backdrop-blur border border-primary-container/80 px-4 py-3 flex items-center gap-3 z-10">
+                <div className="w-2.5 h-2.5 bg-primary-container animate-pulse"></div>
                 <div>
                   <span className="font-label-technical text-[10px] text-white/70 block uppercase">
-                    HYPOTHETICAL TARGET ROAS
+                    HYPOTHETICAL BENCHMARK
                   </span>
-                  <span className="font-headline-sm text-xl font-black text-primary-container">
-                    4.5x MODEL
+                  <span className="font-headline-sm text-base sm:text-lg font-bold text-primary-container">
+                    TARGET: 3.0x ROAS
                   </span>
                 </div>
               </div>
@@ -59,13 +59,13 @@ export default function CaseStudyNoir() {
           <div className="lg:col-span-5 flex flex-col justify-between gap-6">
             <div>
               <div className="inline-block px-2.5 py-1 bg-[#E59858]/20 border border-[#E59858]/40 text-[#E59858] font-label-technical text-xs uppercase tracking-widest font-bold mb-3">
-                CHALLENGER TURNAROUND // SPEC
+                CREATIVE FRAMEWORK // CONCEPT
               </div>
               <h3 className="font-display-hero text-4xl sm:text-5xl uppercase font-black tracking-tight text-white mt-1 mb-4">
                 NOIR BOTANICS
               </h3>
               <p className="font-body-md text-base sm:text-lg text-white/80 leading-relaxed font-light">
-                Stagnant organic distribution and generic catalog packshots erode luxury margin. ADLUMEO replaces sterile studio bottle shots with cinematic sensory micro-dramas, tactile blind olfactory street trials, and laser-targeted Advantage+ creative testing.
+                Stagnant organic distribution and generic catalog packshots erode luxury margin. ADLUMEO replaces sterile studio bottle shots with cinematic sensory micro-dramas, tactile blind scent trials, and laser-targeted Advantage+ creative testing.
               </p>
             </div>
 
@@ -73,10 +73,21 @@ export default function CaseStudyNoir() {
             <div className="grid grid-cols-3 gap-4 p-5 bg-[#140E0A] border border-[#382619] transition-all hover:border-[#E59858]/50">
               <div className="flex flex-col">
                 <span className="font-label-technical text-[11px] text-[#E59858] uppercase">
-                  MODELED REACH
+                  REACH TARGET
                 </span>
-                <span className="font-headline-md text-2xl font-bold text-white mt-1">
-                  +300%
+                <span className="font-headline-md text-xl sm:text-2xl font-bold text-white mt-1">
+                  +150–250%
+                </span>
+                <span className="font-label-technical text-[10px] text-white/50">
+                  Model Benchmark
+                </span>
+              </div>
+              <div className="flex flex-col border-l border-[#382619] pl-4">
+                <span className="font-label-technical text-[11px] text-[#E59858] uppercase">
+                  EFFICIENCY
+                </span>
+                <span className="font-headline-md text-xl sm:text-2xl font-bold text-primary-container mt-1">
+                  -30% CPA
                 </span>
                 <span className="font-label-technical text-[10px] text-white/50">
                   Target Delta
@@ -84,24 +95,13 @@ export default function CaseStudyNoir() {
               </div>
               <div className="flex flex-col border-l border-[#382619] pl-4">
                 <span className="font-label-technical text-[11px] text-[#E59858] uppercase">
-                  EFFICIENCY
+                  CHANNEL
                 </span>
-                <span className="font-headline-md text-2xl font-bold text-primary-container mt-1">
-                  -45% CPA
-                </span>
-                <span className="font-label-technical text-[10px] text-white/50">
-                  Target Benchmark
-                </span>
-              </div>
-              <div className="flex flex-col border-l border-[#382619] pl-4">
-                <span className="font-label-technical text-[11px] text-[#E59858] uppercase">
-                  FRAMEWORK
-                </span>
-                <span className="font-headline-md text-2xl font-bold text-white mt-1">
-                  ADV+
+                <span className="font-headline-md text-xl sm:text-2xl font-bold text-white mt-1">
+                  REELS + ADS
                 </span>
                 <span className="font-label-technical text-[10px] text-white/50">
-                  Meta Dynamic
+                  Meta Advantage+
                 </span>
               </div>
             </div>

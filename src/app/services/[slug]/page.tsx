@@ -8,6 +8,7 @@ const allServiceSlugs = [
   "social-media-management",
   "content-creation",
   "paid-media",
+  "growth-strategy",
   "meta-ads",
   "google-ads",
   "cro-automation",
@@ -25,23 +26,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = services.find((s) => s.slug === params.slug);
   if (service) {
     return {
-      title: `${service.title} // Services`,
+      title: `${service.title} | ADLUMEO Services`,
       description: service.description,
     };
   }
   if (params.slug === "meta-ads") {
     return {
-      title: "Meta Ads & Advantage+ Scaling // Services",
-      description: "Algorithmic Meta Ads testing, creative vector optimization, and ROAS scaling for high-growth brands.",
+      title: "Meta Ads & Paid Social | ADLUMEO Services",
+      description: "Meta Ads testing, creative vector optimization, and ROAS scaling for growing brands.",
     };
   }
   if (params.slug === "google-ads") {
     return {
-      title: "Google Ads & Performance Max // Services",
+      title: "Google Ads & Search Campaigns | ADLUMEO Services",
       description: "High-intent search capture and YouTube video advertising synchronized with social creative.",
     };
   }
-  return { title: "Service Not Found" };
+  if (params.slug === "cro-automation") {
+    return {
+      title: "Growth Strategy & Funnel Optimization | ADLUMEO Services",
+      description: "Strategic roadmapping and conversion rate optimization for social channels.",
+    };
+  }
+  return { title: "Service Not Found | ADLUMEO" };
 }
 
 export default function ServiceDetailPage({ params }: Props) {
@@ -89,6 +96,8 @@ export default function ServiceDetailPage({ params }: Props) {
         platforms: ["Google Search", "YouTube", "Performance Max"],
         accentColor: "lime",
       };
+    } else if (params.slug === "cro-automation") {
+      currentService = services.find((s) => s.slug === "growth-strategy") || services[0];
     } else {
       notFound();
     }
@@ -103,14 +112,14 @@ export default function ServiceDetailPage({ params }: Props) {
           className="inline-flex items-center gap-2 font-label-technical text-xs uppercase text-on-surface-variant hover:text-primary-container transition-colors"
         >
           <span>←</span>
-          <span>RETURN TO ALL CAPABILITIES</span>
+          <span>RETURN TO ALL SERVICES</span>
         </Link>
 
         {/* Title Header */}
         <div className="border-b border-white/10 pb-10">
           <div className="flex items-center gap-2 font-label-technical text-xs text-primary-container uppercase tracking-widest mb-4">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            CAPABILITY // {currentService.number}
+            SERVICE // {currentService.number}
           </div>
 
           <h1 className="font-display-hero text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-white tracking-tight leading-[0.95]">
@@ -128,10 +137,10 @@ export default function ServiceDetailPage({ params }: Props) {
         <div className="p-8 sm:p-12 bg-surface-container-low border border-white/10 flex flex-col gap-8">
           <div>
             <span className="font-label-technical text-xs text-primary-container uppercase tracking-widest font-bold block mb-2">
-              EXACT SCOPE // DELIVERABLES
+              DELIVERABLES & SCOPE
             </span>
             <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white">
-              WHAT YOU RECEIVE IN THIS PROTOCOL
+              WHAT IS INCLUDED
             </h2>
           </div>
 
@@ -150,10 +159,10 @@ export default function ServiceDetailPage({ params }: Props) {
         {/* Ad Spend & Billing Transparency Callout */}
         <div className="p-6 bg-surface-container-high border-l-4 border-primary-container text-on-surface">
           <span className="font-label-technical text-xs text-primary-container uppercase font-bold block mb-1">
-            COMMERCIAL TRANSPARENCY
+            TRANSPARENT BILLING COMMITMENT
           </span>
           <p className="font-body-sm text-sm text-on-surface-variant leading-relaxed">
-            Advertising media spend is paid directly to platforms by your company. ADLUMEO charges a fixed management and creative production retainer, ensuring 100% objective media optimization without hidden percentage markups.
+            Advertising media spend is paid directly to platforms (Meta, Google, LinkedIn) through your own ad accounts. ADLUMEO charges a fixed management fee for strategy, creative production, and execution — zero markup, zero hidden commissions, and you retain full account ownership.
           </p>
         </div>
 
@@ -161,17 +170,17 @@ export default function ServiceDetailPage({ params }: Props) {
         <div className="p-10 bg-primary-container text-black mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <span className="font-label-technical text-xs uppercase tracking-widest font-black block mb-1">
-              READY TO INTEGRATE THIS DISCIPLINE?
+              READY TO GROW YOUR CHANNELS?
             </span>
             <h3 className="font-display-hero text-2xl sm:text-4xl font-black uppercase">
-              CLAIM A STRATEGIC AUDIT.
+              GET YOUR FREE SOCIAL GROWTH AUDIT.
             </h3>
           </div>
           <Link
             href="/free-audit"
             className="px-8 py-4 bg-black text-white font-label-technical text-xs font-bold uppercase hover:bg-white hover:text-black transition-all duration-300 whitespace-nowrap shadow-xl"
           >
-            CLAIM FREE AUDIT ⚡
+            GET FREE AUDIT ⚡
           </Link>
         </div>
       </div>

@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import GlobalClocks from "@/components/common/GlobalClocks";
 
 export default function Footer() {
+  const hasSocial =
+    Boolean(siteConfig.social.instagram) ||
+    Boolean(siteConfig.social.linkedin) ||
+    Boolean(siteConfig.social.youtube) ||
+    Boolean(siteConfig.social.tiktok);
+
   return (
     <footer className="w-full bg-[#050608] text-on-surface pt-24 pb-16 border-t border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-margin-mobile md:px-margin flex flex-col gap-16">
@@ -49,19 +54,16 @@ export default function Footer() {
 
           <div className="font-label-technical text-xs uppercase tracking-widest text-primary-container flex items-center gap-2">
             <span className="w-2 h-2 bg-primary-container animate-pulse"></span>
-            <span>PARADIGM: ZERO WASTED POSTS</span>
+            <span>SOCIAL • CONTENT • PAID MEDIA</span>
           </div>
         </div>
-
-        {/* Global Reference Clocks */}
-        <GlobalClocks />
 
         {/* Navigation Matrix */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 font-label-technical text-xs">
           {/* Capabilities */}
           <div className="flex flex-col gap-3">
             <span className="text-primary-container uppercase font-bold tracking-wider">
-              CAPABILITIES
+              SERVICES
             </span>
             {siteConfig.footerNav.capabilities.map((link) => (
               <Link
@@ -93,7 +95,7 @@ export default function Footer() {
           {/* Agency Ethos */}
           <div className="flex flex-col gap-3">
             <span className="text-primary-container uppercase font-bold tracking-wider">
-              AGENCY ETHOS
+              ABOUT
             </span>
             {siteConfig.footerNav.ethos.map((link) => (
               <Link
@@ -106,68 +108,72 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Presence / Channels */}
+          {/* Channels / Contact */}
           <div className="flex flex-col gap-3">
             <span className="text-primary-container uppercase font-bold tracking-wider">
-              PRESENCE
+              CONNECT
             </span>
+            {siteConfig.social.instagram && (
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-on-surface-variant hover:text-white hover:translate-x-1 transition-all"
+              >
+                Instagram
+              </a>
+            )}
+            {siteConfig.social.linkedin && (
+              <a
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-on-surface-variant hover:text-white hover:translate-x-1 transition-all"
+              >
+                LinkedIn
+              </a>
+            )}
+            {siteConfig.social.youtube && (
+              <a
+                href={siteConfig.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-on-surface-variant hover:text-white hover:translate-x-1 transition-all"
+              >
+                YouTube
+              </a>
+            )}
+            {siteConfig.social.tiktok && (
+              <a
+                href={siteConfig.social.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-on-surface-variant hover:text-white hover:translate-x-1 transition-all"
+              >
+                TikTok
+              </a>
+            )}
             <Link
-              href={siteConfig.social.instagram || "#"}
-              target={siteConfig.social.instagram ? "_blank" : undefined}
-              rel={siteConfig.social.instagram ? "noopener noreferrer" : undefined}
-              className={`text-on-surface-variant transition-all ${
-                siteConfig.social.instagram
-                  ? "hover:text-white hover:translate-x-1"
-                  : "opacity-60 cursor-default"
-              }`}
+              href="/contact"
+              className="text-on-surface-variant hover:text-white hover:translate-x-1 transition-all"
             >
-              Instagram
+              Contact Us
             </Link>
             <Link
-              href={siteConfig.social.linkedin || "#"}
-              target={siteConfig.social.linkedin ? "_blank" : undefined}
-              rel={siteConfig.social.linkedin ? "noopener noreferrer" : undefined}
-              className={`text-on-surface-variant transition-all ${
-                siteConfig.social.linkedin
-                  ? "hover:text-white hover:translate-x-1"
-                  : "opacity-60 cursor-default"
-              }`}
+              href="/free-audit"
+              className="text-primary-container font-bold hover:text-white hover:translate-x-1 transition-all"
             >
-              LinkedIn
-            </Link>
-            <Link
-              href={siteConfig.social.youtube || "#"}
-              target={siteConfig.social.youtube ? "_blank" : undefined}
-              rel={siteConfig.social.youtube ? "noopener noreferrer" : undefined}
-              className={`text-on-surface-variant transition-all ${
-                siteConfig.social.youtube
-                  ? "hover:text-white hover:translate-x-1"
-                  : "opacity-60 cursor-default"
-              }`}
-            >
-              YouTube
-            </Link>
-            <Link
-              href={siteConfig.social.tiktok || "#"}
-              target={siteConfig.social.tiktok ? "_blank" : undefined}
-              rel={siteConfig.social.tiktok ? "noopener noreferrer" : undefined}
-              className={`text-on-surface-variant transition-all ${
-                siteConfig.social.tiktok
-                  ? "hover:text-white hover:translate-x-1"
-                  : "opacity-60 cursor-default"
-              }`}
-            >
-              TikTok
+              Free Social Audit →
             </Link>
           </div>
         </div>
 
         {/* Legal & Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5 font-label-technical text-xs text-on-surface-variant">
-          <p>© {new Date().getFullYear()} {siteConfig.legalName}. ALL ARCHITECTURES REGISTERED.</p>
+          <p>© {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">
-              Privacy Protocol
+              Privacy Policy
             </Link>
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms & Conditions

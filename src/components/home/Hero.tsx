@@ -96,7 +96,7 @@ export default function Hero({ heroVideo }: HeroProps) {
             <div className="inline-flex items-center gap-2.5 px-3 py-1 bg-surface-container-high/90 border border-primary-container/30 mb-5 hover:border-primary-container transition-colors">
               <span className="h-1.5 w-1.5 bg-primary-container animate-ping"></span>
               <span className="font-label-technical text-xs uppercase tracking-[0.25em] text-primary-container font-semibold">
-                CULTURAL ATTENTION ENGINE // PROPRIETARY LAB
+                SOCIAL • CONTENT • PAID MEDIA // ADLUMEO CREATIVE LAB
               </span>
             </div>
 
@@ -109,32 +109,51 @@ export default function Hero({ heroVideo }: HeroProps) {
 
             <div className="mt-4 sm:mt-5 flex items-baseline gap-3">
               <span className="font-label-technical text-xs text-primary-container font-bold uppercase tracking-widest">
-                [CONVERGENCE]
+                [POSITIONING]
               </span>
               <h2 className="font-display-hero text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-primary-container tracking-tight">
-                DEMAND BECOMES GROWTH.
+                ATTENTION INTO GROWTH.
               </h2>
             </div>
 
             <p className="font-body-xl text-base sm:text-xl text-on-surface-variant max-w-2xl mt-5 font-normal leading-relaxed">
-              ADLUMEO — Turning volatile cultural attention into deterministic enterprise revenue. Sterile templates and polite posting vanish into algorithmic silence. We build high-voltage short-form creative engineered strictly to command thumbs.
+              ADLUMEO creates social content people actually want to watch, manages your brand&apos;s online presence, and runs paid campaigns designed to turn attention into measurable growth.
             </p>
 
+            {/* Core Service Descriptors */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 my-6 font-label-technical text-xs">
+              <span className="px-3 py-1 bg-surface-container-high border border-white/10 text-white font-semibold uppercase tracking-wider">
+                Social Media Management
+              </span>
+              <span className="text-primary-container">•</span>
+              <span className="px-3 py-1 bg-surface-container-high border border-white/10 text-white font-semibold uppercase tracking-wider">
+                Content Creation
+              </span>
+              <span className="text-primary-container">•</span>
+              <span className="px-3 py-1 bg-surface-container-high border border-white/10 text-white font-semibold uppercase tracking-wider">
+                Paid Advertising
+              </span>
+              <span className="text-primary-container">•</span>
+              <span className="px-3 py-1 bg-surface-container-high border border-white/10 text-white font-semibold uppercase tracking-wider">
+                Growth Strategy
+              </span>
+            </div>
+
             {/* CTAs */}
-            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <Link
                 href="/free-audit"
                 className="px-8 py-4 bg-primary-container text-on-primary font-label-technical text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-white hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_rgba(204,255,0,0.45)] hover:shadow-[0_0_40px_rgba(204,255,0,0.7)] text-center flex items-center justify-center gap-2 group"
               >
-                <span>CLAIM YOUR FREE GROWTH AUDIT</span>
+                <span>GET FREE SOCIAL AUDIT</span>
                 <span className="text-lg group-hover:rotate-12 transition-transform duration-300">⚡</span>
               </Link>
 
               <Link
-                href="/about"
+                href="/work"
                 className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white font-label-technical text-xs sm:text-sm font-semibold uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-center flex items-center justify-center gap-2 group"
               >
-                <span>EXPLORE AGENCY CULTURE</span>
+                <span>EXPLORE OUR WORK</span>
                 <span className="text-base group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
@@ -143,23 +162,23 @@ export default function Hero({ heroVideo }: HeroProps) {
             <div className="mt-8 flex flex-wrap items-center gap-6 pt-6 border-t border-white/10 font-label-technical text-xs">
               <div>
                 <span className="text-on-surface-variant block uppercase text-[10px]">
-                  BENCHMARK HOOK RETENTION
+                  HOOK BENCHMARK
                 </span>
-                <span className="text-white font-mono font-bold text-sm">89.4% @ 3 SECONDS</span>
+                <span className="text-white font-mono font-bold text-sm">3-SECOND RETENTION FOCUS</span>
               </div>
               <div className="border-l border-white/10 pl-6">
                 <span className="text-on-surface-variant block uppercase text-[10px]">
-                  MEDIA CADENCE
+                  CONTENT CADENCE
                 </span>
                 <span className="text-primary-container font-mono font-bold text-sm">
-                  20–40 4K ASSETS / MO
+                  TAILORED REEL PRODUCTION
                 </span>
               </div>
               <div className="border-l border-white/10 pl-6 hidden sm:block">
                 <span className="text-on-surface-variant block uppercase text-[10px]">
-                  ALGORITHMIC PACING
+                  PAID STRATEGY
                 </span>
-                <span className="text-white font-mono font-bold text-sm">ADVANTAGE+ NATIVE</span>
+                <span className="text-white font-mono font-bold text-sm">META &amp; GOOGLE ADS</span>
               </div>
             </div>
           </div>
@@ -189,20 +208,20 @@ export default function Hero({ heroVideo }: HeroProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/60"></div>
               <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
                 <span className="px-2 py-0.5 bg-primary-container text-black font-label-technical text-[10px] font-bold shadow animate-pulse-glow">
-                  HOOK CONFIRMED 94%
+                  PACED FOR RETENTION
                 </span>
                 <span className="font-label-technical text-[10px] text-white/80 bg-black/60 px-2 py-0.5 backdrop-blur">
-                  4K 9:16 LOG
+                  9:16 VERTICAL REEL
                 </span>
               </div>
               <div className="absolute bottom-3 left-3 right-3 text-white font-label-technical text-xs bg-black/70 backdrop-blur-md p-3 border border-white/10 group-hover:border-primary-container/50 transition-colors z-10">
                 <div className="flex justify-between items-center text-[11px]">
-                  <span className="font-bold">VIRAL RUNWAY REEL</span>
-                  <span className="text-primary-container font-bold">+480% VELOCITY</span>
+                  <span className="font-bold">VIRAL RUNWAY REEL SPEC</span>
+                  <span className="text-primary-container font-bold">1.2S HOOK</span>
                 </div>
                 <div className="flex justify-between items-center text-[10px] text-on-surface-variant mt-1">
-                  <span>8.4M AUDIENCE REACH</span>
-                  <span>1.2s HOOK INTERVAL</span>
+                  <span>SHORT-FORM VIDEO FORMAT</span>
+                  <span>BUILT FOR THE FEED</span>
                 </div>
               </div>
             </div>
@@ -211,17 +230,17 @@ export default function Hero({ heroVideo }: HeroProps) {
             <div className="absolute -left-6 sm:-left-8 top-8 w-44 sm:w-48 aspect-[3/4] overflow-hidden shadow-2xl border border-primary-container/40 z-30 animate-float-delayed hover:rotate-0 hover:scale-105 transition-all duration-500 hidden sm:block bg-surface group">
               <Image
                 src="/images/creative-director.jpg"
-                alt="Executive Creative Direction Spec"
+                alt="Creative Strategy Direction"
                 fill
                 className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
               <div className="absolute bottom-2 left-2 right-2 p-2 bg-black/80 backdrop-blur border border-white/10 group-hover:border-primary-container/50 transition-colors z-10">
                 <span className="font-label-technical text-[9px] uppercase tracking-wider text-primary-container block font-bold">
-                  DIRECTION LEAD
+                  CREATIVE DIRECTION
                 </span>
                 <p className="font-headline-sm text-xs uppercase text-white font-bold">
-                  CREATIVE STRATEGY
+                  SHORT-FORM STRATEGY
                 </p>
               </div>
             </div>
@@ -236,7 +255,7 @@ export default function Hero({ heroVideo }: HeroProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
               <div className="absolute top-2 right-2 px-2 py-0.5 bg-[#FF3E24] text-white font-label-technical text-[9px] font-bold shadow-lg z-10">
-                TARGET 4.5x ROAS
+                CONCEPT SPEC
               </div>
             </div>
           </div>
@@ -247,13 +266,13 @@ export default function Hero({ heroVideo }: HeroProps) {
       <div className="relative z-30 w-full bg-surface-container-low/95 backdrop-blur border-t border-white/[0.08] py-3.5 px-margin-mobile md:px-margin flex flex-wrap items-center justify-between gap-4 text-xs font-label-technical max-w-7xl mx-auto">
         <div className="flex items-center gap-6">
           <span className="text-on-surface-variant">
-            AUDITED HOOK ATTENTION: <strong className="text-white font-mono">HIGH-RETENTION</strong>
+            CORE DISCIPLINES: <strong className="text-white font-mono">SOCIAL • CONTENT • PAID ADS</strong>
           </span>
           <span className="hidden md:inline-block text-on-surface-variant">
-            TARGET MODEL: <strong className="text-primary-container font-mono">4.5x+ ADVANTAGE+</strong>
+            FOCUS: <strong className="text-primary-container font-mono">ATTENTION INTO GROWTH</strong>
           </span>
           <span className="hidden lg:inline-block text-on-surface-variant">
-            AVERAGE HOOK RETENTION: <strong className="text-white font-mono">89.4% @ 3S</strong>
+            METHODOLOGY: <strong className="text-white font-mono">CREATIVE INSTINCT + PERFORMANCE DISCIPLINE</strong>
           </span>
         </div>
 
@@ -263,7 +282,7 @@ export default function Hero({ heroVideo }: HeroProps) {
             <span className="relative inline-flex h-2 w-2 bg-primary-container"></span>
           </span>
           <span>
-            SYSTEM STATUS: <strong className="text-primary-container font-semibold">OPTIMAL VOLTAGE</strong>
+            STUDIO STATUS: <strong className="text-primary-container font-semibold">ACCEPTING CLIENT BRIEFINGS</strong>
           </span>
         </div>
       </div>

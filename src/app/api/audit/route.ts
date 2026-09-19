@@ -49,14 +49,15 @@ export async function POST(req: NextRequest) {
     // 5. Persist Lead in Database
     const lead = await db.lead.create({
       data: {
-        fullName: data.brand, // Brand / Contact
-        businessName: data.brand,
+        fullName: data.fullName,
+        businessName: data.businessName,
         email: data.email,
         phone: data.phone || null,
         socialUrl: data.socialUrl || null,
-        marketingGoal: data.marketingGoal || null,
-        budgetRange: data.budgetRange || null,
         website: data.website || null,
+        industry: data.industry || null,
+        marketingGoal: data.marketingGoal || null,
+        budgetRange: null,
         message: data.message || null,
         source: "free_audit",
         status: "new",
@@ -66,12 +67,11 @@ export async function POST(req: NextRequest) {
     // 6. Asynchronously trigger transactional email notifications
     sendLeadNotifications({
       type: "free_audit",
-      fullName: data.brand,
-      businessName: data.brand,
+      fullName: data.fullName,
+      businessName: data.businessName,
       email: data.email,
       phone: data.phone,
       socialUrl: data.socialUrl,
-      budgetRange: data.budgetRange,
       marketingGoal: data.marketingGoal,
       message: data.message,
     }).catch((err) => console.error("[AUDIT NOTIFICATION BACKGROUND ERROR]", err));

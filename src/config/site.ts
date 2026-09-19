@@ -1,19 +1,27 @@
 export const siteConfig = {
   name: "ADLUMEO",
-  legalName: "ADLUMEO GROUP",
+  legalName: "ADLUMEO",
   tagline: "Attention into Growth.",
   subline: "Social • Content • Paid Media",
   description:
-    "Creative Studio × Social Media Agency × Performance Marketing Agency. Transforming volatile cultural attention into deterministic enterprise revenue.",
+    "Social media management, content creation, and paid advertising agency designed to turn attention into measurable growth.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://adlumeo.com",
   
   // Real configurable business channels
   contact: {
-    email: "briefs@adlumeo.com",
-    deskEmail: "director@adlumeo.com",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@adlumeo.com",
+    deskEmail: process.env.NEXT_PUBLIC_DESK_EMAIL || "",
     phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "",
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
     bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL || "",
+  },
+
+  // Founder profile (empty by default — only rendered when genuine data is configured)
+  founder: {
+    name: process.env.NEXT_PUBLIC_FOUNDER_NAME || "",
+    role: process.env.NEXT_PUBLIC_FOUNDER_ROLE || "",
+    image: process.env.NEXT_PUBLIC_FOUNDER_IMAGE || "",
+    bio: process.env.NEXT_PUBLIC_FOUNDER_BIO || "",
   },
 
   // Social profiles (configured or clean disabled state)
@@ -26,13 +34,10 @@ export const siteConfig = {
 
   // Primary Navigation
   mainNav: [
-    { title: "Overview", href: "/#hero" },
-    { title: "Thesis", href: "/#manifesto-burst" },
-    { title: "Culture", href: "/about" },
-    { title: "Native Lab", href: "/#floating-universe" },
     { title: "Work", href: "/work" },
     { title: "Services", href: "/services" },
     { title: "Process", href: "/process" },
+    { title: "About", href: "/about" },
     { title: "Insights", href: "/insights" },
     { title: "Contact", href: "/contact" },
   ],
@@ -40,25 +45,24 @@ export const siteConfig = {
   // Footer Navigation
   footerNav: {
     capabilities: [
-      { title: "Short-Form Production", href: "/services/content-creation" },
       { title: "Social Media Management", href: "/services/social-media-management" },
-      { title: "Paid Media & Advantage+", href: "/services/paid-media" },
-      { title: "Meta Ads Strategy", href: "/services/meta-ads" },
-      { title: "Google Ads Growth", href: "/services/google-ads" },
+      { title: "Content Creation", href: "/services/content-creation" },
+      { title: "Paid Media", href: "/services/paid-media" },
+      { title: "Growth Strategy", href: "/services/growth-strategy" },
     ],
     selectedWork: [
-      { title: "Noir Botanics (Perfume Concept)", href: "/work/noir-botanics" },
-      { title: "Atelier Velox (Streetwear Concept)", href: "/work/atelier-velox" },
+      { title: "Noir Botanics (Fragrance Spec)", href: "/work/noir-botanics" },
+      { title: "Atelier Velox (Streetwear Spec)", href: "/work/atelier-velox" },
       { title: "Living Social Lab", href: "/#floating-universe" },
     ],
     ethos: [
       { title: "The Manifesto", href: "/#manifesto-burst" },
-      { title: "Agency Culture", href: "/about" },
-      { title: "Delta Framework", href: "/#before-after" },
-      { title: "Audit Dossier", href: "/free-audit" },
+      { title: "About ADLUMEO", href: "/about" },
+      { title: "How We Work", href: "/process" },
+      { title: "Free Social Audit", href: "/free-audit" },
     ],
     legal: [
-      { title: "Privacy Protocol", href: "/privacy-policy" },
+      { title: "Privacy Policy", href: "/privacy-policy" },
       { title: "Terms & Conditions", href: "/terms" },
       { title: "Cookie Policy", href: "/cookie-policy" },
     ],

@@ -30,7 +30,7 @@ export default function CaseStudyVelox() {
           <div className="lg:col-span-5 flex flex-col justify-between gap-6 order-2 lg:order-1">
             <div>
               <span className="px-2.5 py-1 bg-[#FF3E24]/20 border border-[#FF3E24]/40 text-[#FF3E24] font-label-technical text-xs uppercase tracking-widest font-bold inline-block">
-                VIRAL DROP ENGINE // SPEC
+                DROP STRATEGY // CONCEPT
               </span>
               <h3 className="font-display-hero text-4xl sm:text-5xl uppercase font-black tracking-tight text-white mt-4 mb-4">
                 ATELIER VELOX
@@ -44,24 +44,24 @@ export default function CaseStudyVelox() {
             <div className="grid grid-cols-3 gap-4 p-5 bg-[#1B0604] border border-[#FF3E24]/30 transition-all hover:border-[#FF3E24]/60">
               <div className="flex flex-col">
                 <span className="font-label-technical text-[10px] text-[#FF3E24] uppercase">
-                  VIEW TARGET
+                  VIEW GOAL
                 </span>
-                <span className="font-headline-md text-2xl font-bold text-white mt-1">2.0M+</span>
-                <span className="font-label-technical text-[10px] text-white/50">Modeled Goal</span>
+                <span className="font-headline-md text-xl sm:text-2xl font-bold text-white mt-1">500K+</span>
+                <span className="font-label-technical text-[10px] text-white/50">Benchmark Goal</span>
               </div>
               <div className="flex flex-col border-l border-[#FF3E24]/30 pl-4">
                 <span className="font-label-technical text-[10px] text-[#FF3E24] uppercase">
-                  ACQ. TARGET
+                  RETENTION
                 </span>
-                <span className="font-headline-md text-2xl font-bold text-[#FF3E24] mt-1">-40%</span>
-                <span className="font-label-technical text-[10px] text-white/50">Target CPA</span>
+                <span className="font-headline-md text-xl sm:text-2xl font-bold text-[#FF3E24] mt-1">70%</span>
+                <span className="font-label-technical text-[10px] text-white/50">@ 3 Seconds</span>
               </div>
               <div className="flex flex-col border-l border-[#FF3E24]/30 pl-4">
                 <span className="font-label-technical text-[10px] text-[#FF3E24] uppercase">
-                  SELLOUT MODEL
+                  VIP CONVERSION
                 </span>
-                <span className="font-headline-md text-2xl font-bold text-white mt-1">&lt;30 MIN</span>
-                <span className="font-label-technical text-[10px] text-white/50">VIP Access</span>
+                <span className="font-headline-md text-xl sm:text-2xl font-bold text-white mt-1">15%</span>
+                <span className="font-label-technical text-[10px] text-white/50">List Opt-in</span>
               </div>
             </div>
 

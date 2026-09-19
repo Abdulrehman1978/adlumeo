@@ -18,20 +18,20 @@ interface CellItem {
 const cells: CellItem[] = [
   {
     id: "cell-1",
-    tag: "REEL // 01",
+    tag: "REEL // SHORT-FORM",
     title: "STREETWEAR DROP SPRINT",
-    metric1: "TARGET 2.8M REACH",
-    metric2: "HIGH ENGAGEMENT",
+    metric1: "SHORT-FORM REEL",
+    metric2: "HOOK RETENTION",
     image: "/images/reel-streetwear-runway.jpg",
     alt: "Streetwear Drop Sprint Reel",
     tagColor: "lime",
   },
   {
     id: "cell-2",
-    tag: "CAROUSEL ENGINE",
+    tag: "CAROUSEL POST",
     title: "NOIR SERUM LAUNCH",
-    metric1: "78% SWIPE RATE",
-    metric2: "HIGH RETENTION",
+    metric1: "MULTI-SLIDE CAROUSEL",
+    metric2: "EDUCATIONAL SWIPES",
     image: "/images/reel-noir-serum.jpg",
     alt: "Noir Serum Launch Carousel",
     tagColor: "vermilion",
@@ -39,22 +39,22 @@ const cells: CellItem[] = [
   },
   {
     id: "cell-3",
-    tag: "PAID CONVERSION",
+    tag: "PAID CAMPAIGN",
     title: "CLINICAL DIRECT RESPONSE",
-    metric1: "TESTED AD HOOKS",
-    metric2: "TARGET 4.5x ROAS",
+    metric1: "DIRECT-RESPONSE AD",
+    metric2: "CONVERSION FOCUS",
     image: "/images/reel-clinical-ads.jpg",
     alt: "Clinical Aesthetics Direct Response Ad",
     tagColor: "lime",
   },
   {
     id: "cell-4",
-    tag: "B2B AUTHORITY",
-    title: "FOUNDER ATTENTION MATRIX",
-    metric1: "LINKEDIN VIRAL",
-    metric2: "INBOUND DEMAND",
+    tag: "ORGANIC SOCIAL",
+    title: "FOUNDER THOUGHT LEADERSHIP",
+    metric1: "LINKEDIN & INSTAGRAM",
+    metric2: "AUTHORITY CONTENT",
     image: "/images/reel-founder-matrix.jpg",
-    alt: "Founder Thought Leadership Matrix",
+    alt: "Founder Thought Leadership Content",
     tagColor: "white",
     offset: true,
   },
@@ -80,14 +80,14 @@ export default function LivingUniverse() {
           <div>
             <div className="flex items-center gap-2 font-label-technical text-xs text-primary-container uppercase tracking-widest mb-2">
               <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-              NATIVE LAB // ALGORITHMIC MULTIVERSE
+              BUILT FOR THE FEED // DESIGNED TO PERFORM
             </div>
             <h2 className="font-display-hero text-4xl sm:text-6xl uppercase font-black tracking-tight text-white">
               LIVING SOCIAL UNIVERSE.
             </h2>
           </div>
           <p className="font-body-md text-on-surface-variant max-w-md">
-            Click any production cell below to expand into full-screen format. Hover to activate 3D depth perspective.
+            Click any creative asset below to preview format details. Designed to stop thumbs and sustain attention.
           </p>
         </div>
 

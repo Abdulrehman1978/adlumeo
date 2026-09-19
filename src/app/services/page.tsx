@@ -3,9 +3,9 @@ import Link from "next/link";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Agency Services & Production Arsenal",
+  title: "Services & Capabilities | ADLUMEO",
   description:
-    "Explore ADLUMEO's core capabilities: Short-Form Video Production, Social Media Management, Paid Advantage+ Amplification, and Full-Funnel Inbound CRO.",
+    "Explore ADLUMEO's core disciplines: Social Media Management, Content Creation, Paid Media, and Growth Strategy.",
 };
 
 export default function ServicesPage() {
@@ -16,13 +16,13 @@ export default function ServicesPage() {
         <div className="border-b border-white/10 pb-10">
           <div className="flex items-center gap-2 font-label-technical text-xs text-primary-container uppercase tracking-widest mb-3">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            CAPABILITIES // PRODUCTION DISCIPLINES
+            WHAT WE DO // CORE DISCIPLINES
           </div>
           <h1 className="font-display-hero text-5xl sm:text-7xl lg:text-8xl font-black uppercase text-white tracking-tight">
-            THE ARSENAL.
+            OUR SERVICES.
           </h1>
           <p className="font-body-xl text-lg sm:text-xl text-on-surface-variant max-w-2xl mt-4">
-            Zero commodity filler. Four synchronized disciplines engineered to transform volatile social media attention into deterministic enterprise revenue.
+            No bloated agency fluff. Four focused disciplines engineered to build your presence, produce scroll-stopping content, and drive measurable client acquisition.
           </p>
         </div>
 

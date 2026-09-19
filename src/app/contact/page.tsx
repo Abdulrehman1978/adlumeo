@@ -20,13 +20,13 @@ export default function ContactPage() {
         <div className="border-b border-white/10 pb-10">
           <div className="flex items-center gap-2 font-label-technical text-xs text-primary-container uppercase tracking-widest mb-3">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            EXECUTIVE DESKS // INBOUND PIPELINE
+            CONNECT WITH ADLUMEO // DIRECT CHANNELS
           </div>
           <h1 className="font-display-hero text-5xl sm:text-7xl font-black uppercase text-white tracking-tight">
             GET IN TOUCH.
           </h1>
           <p className="font-body-xl text-lg sm:text-xl text-on-surface-variant max-w-2xl mt-4">
-            We partner with a selective roster of ambitious consumer, luxury, and technology brands. Transmit an executive brief below.
+            We work with ambitious businesses and brands that want to turn social attention into measurable growth.
           </p>
         </div>
 
@@ -39,10 +39,10 @@ export default function ContactPage() {
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="p-8 bg-surface-container-low border border-white/10 flex flex-col gap-4 font-label-technical">
               <span className="text-xs text-primary-container uppercase font-bold tracking-wider">
-                DIRECT CHANNELS
+                DIRECT CONTACT
               </span>
               <p className="font-body-sm text-sm text-on-surface-variant font-sans">
-                Prefer immediate direct communication? Use our studio desks:
+                Prefer immediate direct communication? Reach out directly:
               </p>
 
               <div className="flex flex-col gap-3 mt-2">
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 >
                   <div>
                     <span className="text-[10px] text-primary-container group-hover:text-black uppercase block font-bold">
-                      Studio Briefs
+                      Email
                     </span>
                     <span className="text-sm font-bold">{siteConfig.contact.email}</span>
                   </div>
@@ -67,9 +67,11 @@ export default function ContactPage() {
                 >
                   <div>
                     <span className="text-[10px] text-primary-container group-hover:text-black uppercase block font-bold">
-                      WhatsApp Pipeline
+                      WhatsApp
                     </span>
-                    <span className="text-sm font-bold">Fast-Track Alignment</span>
+                    <span className="text-sm font-bold">
+                      {siteConfig.contact.whatsapp || "Chat with us"}
+                    </span>
                   </div>
                   <span>💬</span>
                 </a>
@@ -78,10 +80,10 @@ export default function ContactPage() {
 
             <div className="p-6 bg-surface-container-high border-l-4 border-primary-container">
               <span className="font-label-technical text-xs text-primary-container uppercase font-bold block mb-1">
-                CONFIDENTIALITY PROTOCOL
+                CONFIDENTIALITY
               </span>
               <p className="font-body-sm text-xs text-on-surface-variant leading-relaxed font-sans">
-                All pre-launch materials, pitch decks, campaign concepts, and customer numbers shared with ADLUMEO remain protected under mutual non-disclosure standards.
+                We treat pre-launch materials, campaign concepts and business information as confidential. Formal NDAs can be arranged where required.
               </p>
             </div>
           </div>

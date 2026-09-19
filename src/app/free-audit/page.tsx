@@ -20,17 +20,17 @@ export default function FreeAuditPage() {
         <div className="border-b border-white/10 pb-10">
           <div className="flex items-center gap-2 font-label-technical text-xs text-primary-container uppercase tracking-widest mb-3">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            PRIMARY CONVERSION // STRATEGIC TEARDOWN
+            COMPLIMENTARY REVIEW // SOCIAL PRESENCE
           </div>
           <h1 className="font-display-hero text-5xl sm:text-7xl font-black uppercase text-white tracking-tight">
-            CLAIM YOUR FREE GROWTH AUDIT.
+            GET YOUR FREE SOCIAL AUDIT.
           </h1>
           <p className="font-body-xl text-lg sm:text-xl text-on-surface-variant max-w-3xl mt-4">
-            No automated generic reports. Our creative and media strategists record a customized video teardown diagnosing your hook retention drop-offs, missed audience reach, and ad scaling opportunities.
+            We&apos;ll review your brand&apos;s current social presence, content formats, and growth opportunities. No pushy sales pitch—just practical feedback on what we would improve.
           </p>
         </div>
 
-        {/* Audit Form & Fast-Track Desk Grid */}
+        {/* Audit Form & Contact Desk Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7">
             <AuditForm />
@@ -39,20 +39,20 @@ export default function FreeAuditPage() {
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div className="p-8 bg-surface-container-low border border-white/10 flex flex-col gap-4">
               <span className="font-label-technical text-xs text-primary-container uppercase font-bold tracking-wider">
-                WHAT YOU WILL RECEIVE
+                WHAT WE LOOK AT
               </span>
               <ul className="flex flex-col gap-3 font-body-sm text-sm text-white/90">
                 <li className="flex items-start gap-2.5">
                   <span className="text-primary-container font-bold">01</span>
-                  <span><strong>1.2-Second Hook Diagnostic:</strong> Exact analysis of where and why viewers swipe past your content.</span>
+                  <span><strong>Hook &amp; Retention Quality:</strong> How effectively your short-form videos grab and hold attention in the first 3 seconds.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-primary-container font-bold">02</span>
-                  <span><strong>Profile Aesthetic Syntax:</strong> Evaluation of your visual branding, grid coherence, and cultural authority.</span>
+                  <span><strong>Content &amp; Profile Clarity:</strong> Whether your bio, visuals, and messaging clearly communicate what you do and why it matters.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-primary-container font-bold">03</span>
-                  <span><strong>Paid Media Vector Framework:</strong> Recommended Advantage+ testing roadmap to turn organic attention into predictable pipeline.</span>
+                  <span><strong>Paid Media &amp; Funnel Opportunities:</strong> Where paid ads, retargeting, or lead capture could turn attention into customers.</span>
                 </li>
               </ul>
             </div>
@@ -60,10 +60,10 @@ export default function FreeAuditPage() {
             {/* Direct Escalation */}
             <div className="p-8 bg-surface-container-high border border-white/10 flex flex-col gap-4 font-label-technical">
               <span className="text-xs uppercase text-on-surface-variant font-bold tracking-wider">
-                FAST-TRACK IMMINENT LAUNCHES
+                PREFER DIRECT COMMUNICATION?
               </span>
               <p className="font-body-sm text-sm text-on-surface-variant font-sans">
-                Preparing a major funding milestone, capsule drop, or product announcement within 14 days? Connect with our team directly:
+                If you have an upcoming product launch or want to connect immediately:
               </p>
 
               <div className="flex flex-col gap-3 mt-2">
@@ -73,7 +73,7 @@ export default function FreeAuditPage() {
                   rel={siteConfig.contact.whatsapp ? "noopener noreferrer" : undefined}
                   className="p-4 bg-black text-white hover:text-primary-container border border-white/15 flex items-center justify-between transition-colors"
                 >
-                  <span className="text-xs font-bold uppercase">WhatsApp Fast-Track</span>
+                  <span className="text-xs font-bold uppercase">Chat on WhatsApp</span>
                   <span>💬</span>
                 </a>
                 <a

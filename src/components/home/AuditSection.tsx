@@ -37,18 +37,18 @@ export default function AuditSection() {
           <div className="lg:col-span-5 flex flex-col justify-between gap-8 text-black">
             <div>
               <span className="font-label-technical text-xs uppercase tracking-widest font-bold block mb-2">
-                [ FAST-TRACK TRANSMISSION ]
+                [ DIRECT CHANNELS ]
               </span>
               <h3 className="font-display-hero text-3xl font-black uppercase">
-                NEED IMMEDIATE STRATEGIC ALIGNMENT?
+                PREFER TO TALK DIRECTLY?
               </h3>
               <p className="font-body-md text-base mt-2 font-medium">
-                If you are preparing an imminent brand launch, funding announcement, or major product drop within 14 days, bypass standard queues:
+                If you have an upcoming launch or want to discuss your project directly with our team:
               </p>
             </div>
 
             <div className="flex flex-col gap-4 font-label-technical">
-              {/* WhatsApp Fast Track */}
+              {/* WhatsApp */}
               <a
                 href={whatsappUrl}
                 target={siteConfig.contact.whatsapp ? "_blank" : undefined}
@@ -57,26 +57,26 @@ export default function AuditSection() {
               >
                 <div>
                   <span className="text-xs uppercase text-primary-container group-hover:text-black transition-colors block">
-                    Instant Pipeline
+                    Quick Response
                   </span>
-                  <span className="text-xl font-bold uppercase">WhatsApp Fast-Track</span>
+                  <span className="text-xl font-bold uppercase">Chat on WhatsApp</span>
                   <span className="text-xs block opacity-70 mt-1">
-                    {siteConfig.contact.whatsapp || "Configurable in siteConfig"}
+                    {siteConfig.contact.whatsapp || "Available on request"}
                   </span>
                 </div>
                 <span className="text-3xl group-hover:translate-x-1 transition-transform">💬</span>
               </a>
 
-              {/* Studio Desk Email */}
+              {/* Email */}
               <a
                 href={`mailto:${siteConfig.contact.email}`}
                 className="p-6 bg-black text-white hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-between group shadow-lg"
               >
                 <div>
                   <span className="text-xs uppercase text-primary-container group-hover:text-black transition-colors block">
-                    Direct Executive Desk
+                    Email Enquiries
                   </span>
-                  <span className="text-xl font-bold uppercase">Studio Briefings</span>
+                  <span className="text-xl font-bold uppercase">Send an Email</span>
                   <span className="text-xs block opacity-70 mt-1">{siteConfig.contact.email}</span>
                 </div>
                 <span className="text-3xl group-hover:translate-x-1 transition-transform">✉️</span>
@@ -84,7 +84,7 @@ export default function AuditSection() {
             </div>
 
             <div className="p-4 border-2 border-black font-label-technical text-xs font-bold uppercase hover:bg-black hover:text-primary-container transition-colors duration-300">
-              Direct Executive Review on All Inbound Briefs // Confidential NDA Standard.
+              We treat pre-launch materials, campaign concepts and business information as confidential. Formal NDAs can be arranged where required.
             </div>
           </div>
         </div>

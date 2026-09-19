@@ -98,56 +98,97 @@ export default function CaseStudyDetail({ params }: Props) {
           </div>
 
           <div className="md:col-span-8 flex flex-col gap-10">
-            {/* Summary & Challenge */}
+            {/* Objective & Challenge */}
             <div>
               <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white mb-3">
-                THE OBJECTIVE &amp; CHALLENGE
+                01 // THE OBJECTIVE &amp; CHALLENGE
               </h2>
-              <p className="font-body-md text-base sm:text-lg text-on-surface-variant leading-relaxed mb-4">
-                {study.summary}
-              </p>
+              {study.objective && (
+                <div className="mb-3 p-4 bg-white/[0.02] border-l-2 border-primary-container">
+                  <span className="font-label-technical text-xs uppercase text-primary-container font-bold block mb-1">
+                    PRIMARY OBJECTIVE
+                  </span>
+                  <p className="font-body-md text-base text-white/90">
+                    {study.objective}
+                  </p>
+                </div>
+              )}
               <p className="font-body-md text-base text-on-surface-variant leading-relaxed">
                 {study.challenge}
               </p>
             </div>
 
-            {/* Strategy */}
+            {/* Target Audience */}
+            {study.targetAudience && (
+              <div>
+                <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white mb-3">
+                  02 // TARGET AUDIENCE
+                </h2>
+                <p className="font-body-md text-base text-on-surface-variant leading-relaxed">
+                  {study.targetAudience}
+                </p>
+              </div>
+            )}
+
+            {/* Creative Idea */}
+            {study.creativeIdea && (
+              <div>
+                <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white mb-3">
+                  03 // THE CREATIVE IDEA
+                </h2>
+                <p className="font-body-md text-base text-on-surface-variant leading-relaxed">
+                  {study.creativeIdea}
+                </p>
+              </div>
+            )}
+
+            {/* Content Strategy */}
             <div>
               <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white mb-3">
-                THE STRATEGIC FRAMEWORK
+                04 // CONTENT &amp; ASSET STRATEGY
               </h2>
+              <p className="font-body-md text-base text-on-surface-variant leading-relaxed mb-3">
+                {study.contentStrategy || study.creativeDirection}
+              </p>
               <p className="font-body-md text-base text-on-surface-variant leading-relaxed">
-                {study.strategy}
+                {study.execution}
               </p>
             </div>
 
-            {/* Creative Direction */}
-            <div>
-              <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white mb-3">
-                CREATIVE &amp; ASSET DIRECTION
-              </h2>
-              <p className="font-body-md text-base text-on-surface-variant leading-relaxed">
-                {study.creativeDirection}
-              </p>
-            </div>
+            {/* Paid Media Strategy */}
+            {study.paidMediaStrategy && (
+              <div>
+                <h2 className="font-display-hero text-2xl sm:text-3xl uppercase font-bold text-white mb-3">
+                  05 // PAID MEDIA &amp; AMPLIFICATION
+                </h2>
+                <p className="font-body-md text-base text-on-surface-variant leading-relaxed">
+                  {study.paidMediaStrategy}
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Hypothetical Target Modeling / KPI Framework */}
         <div className="p-8 bg-surface-container-low border border-white/10">
-          <span className="font-label-technical text-xs text-primary-container uppercase tracking-widest font-bold block mb-4">
-            HYPOTHETICAL TARGET MODELING // MEASUREMENT FRAMEWORK
-          </span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 border-b border-white/10 pb-4">
+            <span className="font-label-technical text-xs text-primary-container uppercase tracking-widest font-bold">
+              KPI BENCHMARK FRAMEWORK // MODELED TARGETS
+            </span>
+            <span className="font-label-technical text-[10px] text-white/50 uppercase">
+              HYPOTHETICAL TARGET / BENCHMARK FRAMEWORK
+            </span>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {study.kpiFramework.map((kpi) => (
-              <div key={kpi.label} className="flex flex-col gap-1">
+              <div key={kpi.label} className="flex flex-col gap-1 p-4 bg-white/[0.02] border border-white/5">
                 <span className="font-label-technical text-xs text-on-surface-variant uppercase">
                   {kpi.label}
                 </span>
-                <strong className="font-headline-lg text-2xl sm:text-3xl font-black text-white font-mono">
+                <strong className="font-headline-lg text-xl sm:text-2xl font-bold text-white font-mono mt-1">
                   {kpi.target}
                 </strong>
-                <span className="font-label-technical text-[10px] text-white/50">
+                <span className="font-label-technical text-[11px] text-white/50 mt-1">
                   {kpi.benchmarkContext}
                 </span>
               </div>
@@ -187,17 +228,17 @@ export default function CaseStudyDetail({ params }: Props) {
         <div className="p-10 bg-primary-container text-black mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <span className="font-label-technical text-xs uppercase tracking-widest font-black block mb-1">
-              READY TO ACCELERATE ATTENTION?
+              READY TO GROW YOUR SOCIAL CHANNELS?
             </span>
             <h3 className="font-display-hero text-2xl sm:text-4xl font-black uppercase">
-              CLAIM YOUR STRATEGIC AUDIT.
+              GET YOUR FREE SOCIAL GROWTH AUDIT.
             </h3>
           </div>
           <Link
             href="/free-audit"
             className="px-8 py-4 bg-black text-white font-label-technical text-xs font-bold uppercase hover:bg-white hover:text-black transition-all duration-300 whitespace-nowrap shadow-xl"
           >
-            CLAIM FREE AUDIT ⚡
+            GET FREE AUDIT ⚡
           </Link>
         </div>
       </div>

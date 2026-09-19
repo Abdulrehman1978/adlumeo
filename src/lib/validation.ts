@@ -1,15 +1,15 @@
 import { z } from "zod";
 
-// Free Social Growth Audit Validation Schema
+// Free Social Growth Audit Validation Schema (Zero-friction: no budget requirement)
 export const auditFormSchema = z.object({
-  brand: z
+  fullName: z
     .string()
-    .min(2, "Brand/Company name must be at least 2 characters")
-    .max(100, "Brand name is too long"),
-  socialUrl: z
+    .min(2, "Full name must be at least 2 characters")
+    .max(100, "Name is too long"),
+  businessName: z
     .string()
-    .min(2, "Social profile handle or URL is required")
-    .max(255, "Profile handle/URL is too long"),
+    .min(2, "Business / Brand name must be at least 2 characters")
+    .max(100, "Business name is too long"),
   email: z
     .string()
     .email("Please provide a valid work email address")
@@ -19,17 +19,21 @@ export const auditFormSchema = z.object({
     .max(50, "Phone number is too long")
     .optional()
     .or(z.literal("")),
-  budgetRange: z
+  socialUrl: z
+    .string()
+    .min(2, "Social profile handle or URL is required")
+    .max(255, "Profile handle/URL is too long"),
+  website: z
+    .string()
+    .max(255)
+    .optional()
+    .or(z.literal("")),
+  industry: z
     .string()
     .max(100)
     .optional()
     .or(z.literal("")),
   marketingGoal: z
-    .string()
-    .max(255)
-    .optional()
-    .or(z.literal("")),
-  website: z
     .string()
     .max(255)
     .optional()

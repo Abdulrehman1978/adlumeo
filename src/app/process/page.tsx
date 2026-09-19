@@ -2,60 +2,60 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "The Process // 7-Step Growth Protocol",
+  title: "The Process — How Working With ADLUMEO Works",
   description:
-    "Discover ADLUMEO's systematic 7-step growth methodology from initial diagnostic to algorithmic amplification and scaling.",
+    "Explore ADLUMEO's straightforward 7-step client workflow from initial free audit through strategy, content approval, launching campaigns, and monthly reporting.",
 };
 
 const steps = [
   {
     number: "01",
-    title: "UNDERSTAND",
-    subtitle: "Brand Diagnostic & Audience Interrogation",
+    title: "FREE AUDIT",
+    subtitle: "Review Your Current Presence",
     description:
-      "We dissect your existing social presence, audience demographic drop-off points, competitor blindspots, and core commercial objectives.",
+      "Submit the free audit form and we'll review your social profiles, content cadence, and any active paid campaigns to identify the biggest opportunities and gaps.",
   },
   {
     number: "02",
-    title: "STRATEGIZE",
-    subtitle: "Pillars, Hook Angles & Channel Playbooks",
+    title: "STRATEGY CALL",
+    subtitle: "15-Minute Discovery Session",
     description:
-      "We engineer three to five proprietary content pillars, establish visual and sound guidelines, and map multi-channel distribution calendars.",
+      "We schedule a focused call to understand your goals, target audience, and commercial priorities. No pressure or sales games — just an honest conversation to see if we're a mutual fit.",
   },
   {
     number: "03",
-    title: "CREATE",
-    subtitle: "Cinematic 4K Short-Form Production",
+    title: "CLEAR PROPOSAL",
+    subtitle: "Scope, Deliverables & Fixed Pricing",
     description:
-      "Our studio and field teams script, shoot, and edit 20–40 high-retention vertical assets monthly with custom sound stems and psychological 1.2s hooks.",
+      "You receive a written proposal outlining exactly what we'll deliver, on what timeline, and at what fixed monthly cost. No hidden agency fees and zero markups on media spend.",
   },
   {
     number: "04",
-    title: "DISTRIBUTE",
-    subtitle: "Active Publishing & Community Stewardship",
+    title: "ONBOARDING",
+    subtitle: "Brand Access & Strategy Kickoff",
     description:
-      "We manage publishing cadence, optimize hashtags/metadata, and manage inbound comments and automated DM qualification sequences daily.",
+      "Once you approve the proposal, we conduct brand and audience onboarding. We gather assets, account access, and baseline analytics before producing any content.",
   },
   {
     number: "05",
-    title: "AMPLIFY",
-    subtitle: "Advantage+ Media Buying & Vector Testing",
+    title: "CREATE & APPROVE",
+    subtitle: "Content You Review Before It Goes Live",
     description:
-      "Organic viral signals are ported straight into Meta and Google ad accounts for dynamic cohort testing and scalable customer acquisition.",
+      "We produce scheduled batches of content and share them with you for review. Nothing is published until you've approved it. You maintain full editorial control.",
   },
   {
     number: "06",
-    title: "OPTIMIZE",
-    subtitle: "Retention Analytics & Creative Diagnostics",
+    title: "PUBLISH & LAUNCH",
+    subtitle: "Organic Publishing + Paid Campaigns",
     description:
-      "We analyze drop-off curves (1s, 3s, 15s), cost per qualified lead, and blended ROAS, eliminating underperforming hooks and doubling down on winners.",
+      "Approved content goes live across your channels on an optimized schedule. If paid media is in scope, campaigns run directly through your own ad accounts with 100% financial transparency.",
   },
   {
     number: "07",
-    title: "SCALE",
-    subtitle: "Budget Compounding & Market Dominance",
+    title: "MEASURE & IMPROVE",
+    subtitle: "Monthly Reporting & Ongoing Refinement",
     description:
-      "As high-converting creative formulas are validated, we scale ad spend and production cadence to capture dominant cultural mindshare in your vertical.",
+      "Every month you receive a clear performance report covering reach, engagement, lead enquiries, and paid ROAS. We use these insights to systematically improve what gets created next.",
   },
 ];
 
@@ -67,13 +67,13 @@ export default function ProcessPage() {
         <div className="border-b border-white/10 pb-10">
           <div className="flex items-center gap-2 font-label-technical text-xs text-primary-container uppercase tracking-widest mb-3">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            SYSTEMATIC PROTOCOL // 7 PHASES
+            CLIENT WORKFLOW // 7 PHASES
           </div>
           <h1 className="font-display-hero text-5xl sm:text-7xl lg:text-8xl font-black uppercase text-white tracking-tight">
             THE PROCESS.
           </h1>
           <p className="font-body-xl text-lg sm:text-xl text-on-surface-variant max-w-2xl mt-4">
-            How we take businesses from unread, polite posting to commanding high-retention cultural attention and scalable customer acquisition.
+            How we take businesses from unread, irregular posting to commanding high-retention attention and generating qualified customer inquiries.
           </p>
         </div>
 
@@ -111,10 +111,10 @@ export default function ProcessPage() {
         <div className="p-10 bg-primary-container text-black mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <span className="font-label-technical text-xs uppercase tracking-widest font-black block mb-1">
-              READY TO COMMENCE PHASE 01?
+              READY TO START WITH STEP 01?
             </span>
             <h3 className="font-display-hero text-2xl sm:text-4xl font-black uppercase">
-              CLAIM YOUR STRATEGIC AUDIT.
+              CLAIM YOUR FREE SOCIAL AUDIT.
             </h3>
           </div>
           <Link

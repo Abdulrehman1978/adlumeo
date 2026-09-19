@@ -6,6 +6,8 @@ import CaseStudyNoir from "@/components/home/CaseStudyNoir";
 import CaseStudyVelox from "@/components/home/CaseStudyVelox";
 import ProfileDeltaSlider from "@/components/home/ProfileDeltaSlider";
 import ServicesArsenal from "@/components/home/ServicesArsenal";
+import HowItWorks from "@/components/home/HowItWorks";
+import TrustStrip from "@/components/home/TrustStrip";
 import FAQSection from "@/components/home/FAQSection";
 import AuditSection from "@/components/home/AuditSection";
 
@@ -30,16 +32,22 @@ export default function HomePage() {
       {/* 6. Case Study 02: Atelier Velox (Concept Drop Sprint) */}
       <CaseStudyVelox />
 
-      {/* 7. Interactive Profile Transformation Delta (Before / After) */}
+      {/* 7. Interactive Before / After Profile Comparison */}
       <ProfileDeltaSlider />
 
-      {/* 8. The Arsenal: Services & Capabilities Breakdown */}
+      {/* 8. Core Services & Capabilities Breakdown */}
       <ServicesArsenal />
 
-      {/* 9. Frequently Asked Questions */}
+      {/* 9. 7-Step Process: What Working With Us Looks Like */}
+      <HowItWorks />
+
+      {/* 10. Trust Strip: Commitments, Founder (conditional), & Brand Statement */}
+      <TrustStrip />
+
+      {/* 11. Frequently Asked Questions */}
       <FAQSection />
 
-      {/* 10. Acid-Lime Conversion Finale & Free Social Growth Audit */}
+      {/* 12. Acid-Lime Conversion Finale & Free Social Growth Audit */}
       <AuditSection />
     </main>
   );

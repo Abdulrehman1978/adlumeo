@@ -108,54 +108,15 @@ export default function Header() {
           className="hidden lg:flex items-center gap-space-lg font-label-technical text-xs tracking-widest uppercase"
           aria-label="Main Navigation"
         >
-          <Link
-            href="/#hero"
-            className="text-primary-container transition-all hover:text-white relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary-container"
-          >
-            Overview
-          </Link>
-          <Link
-            href="/#manifesto-burst"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Thesis
-          </Link>
-          <Link
-            href="/about"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Culture
-          </Link>
-          <Link
-            href="/work"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Work
-          </Link>
-          <Link
-            href="/services"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Services
-          </Link>
-          <Link
-            href="/process"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Process
-          </Link>
-          <Link
-            href="/insights"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Insights
-          </Link>
-          <Link
-            href="/contact"
-            className="text-on-surface-variant hover:text-primary transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Contact
-          </Link>
+          {siteConfig.mainNav.map((item) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className="text-on-surface-variant hover:text-white transition-all duration-200 hover:-translate-y-0.5"
+            >
+              {item.title}
+            </Link>
+          ))}
         </nav>
 
         {/* Action Button & Mobile Drawer Trigger */}
@@ -164,23 +125,25 @@ export default function Header() {
             href="/free-audit"
             className="inline-flex items-center justify-center px-5 py-2.5 bg-primary-container text-on-primary font-label-technical text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_24px_rgba(204,255,0,0.3)] hover:shadow-[0_0_35px_rgba(204,255,0,0.65)]"
           >
-            Claim Audit
+            Get Free Audit
           </Link>
 
           <div className="flex items-center gap-space-xs">
-            <Link
-              href="/about"
-              className="relative w-8 h-8 overflow-hidden border border-primary-container/40 hover:border-primary-container hover:scale-110 transition-all duration-300"
-              title="Creative Direction"
-            >
-              <Image
-                src="/images/creative-director.jpg"
-                alt="Creative Strategy Lead"
-                width={32}
-                height={32}
-                className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all"
-              />
-            </Link>
+            {siteConfig.founder.image && siteConfig.founder.name && (
+              <Link
+                href="/about"
+                className="relative w-8 h-8 overflow-hidden border border-primary-container/40 hover:border-primary-container hover:scale-110 transition-all duration-300"
+                title={siteConfig.founder.name}
+              >
+                <Image
+                  src={siteConfig.founder.image}
+                  alt={siteConfig.founder.name}
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all"
+                />
+              </Link>
+            )}
 
             {/* Mobile Hamburger Button */}
             <button
@@ -227,62 +190,16 @@ export default function Header() {
           aria-label="Mobile Navigation Menu"
         >
           <nav className="flex flex-col gap-6 pt-4 font-display-hero text-2xl uppercase font-black">
-            <Link
-              href="/#hero"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Overview
-            </Link>
-            <Link
-              href="/#manifesto-burst"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Thesis
-            </Link>
-            <Link
-              href="/work"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Work
-            </Link>
-            <Link
-              href="/services"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Services
-            </Link>
-            <Link
-              href="/process"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Process
-            </Link>
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Culture
-            </Link>
-            <Link
-              href="/insights"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Insights
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-primary-container transition-colors"
-            >
-              Contact
-            </Link>
+            {siteConfig.mainNav.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-white hover:text-primary-container transition-colors"
+              >
+                {item.title}
+              </Link>
+            ))}
           </nav>
 
           <div className="flex flex-col gap-4 pt-8 border-t border-white/10">
@@ -291,7 +208,7 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-4 bg-primary-container text-black font-label-technical text-sm font-bold uppercase tracking-widest text-center shadow-[0_0_30px_rgba(204,255,0,0.4)]"
             >
-              Claim Free Growth Audit
+              Get Free Audit
             </Link>
             <p className="font-label-technical text-xs text-on-surface-variant uppercase text-center">
               ADLUMEO // Attention into Growth

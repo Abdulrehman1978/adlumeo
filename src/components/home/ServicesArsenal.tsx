@@ -9,33 +9,33 @@ export default function ServicesArsenal() {
         <div className="flex items-center gap-12 whitespace-nowrap animate-marquee font-label-technical text-xs tracking-widest uppercase font-bold text-white">
           <span className="flex items-center gap-2">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            SHORT-FORM CINEMA
+            SHORT-FORM REELS
           </span>
           <span>•</span>
-          <span className="text-primary-container">ALGORITHMIC HOOK PACING</span>
+          <span className="text-primary-container">SOCIAL MEDIA MANAGEMENT</span>
           <span>•</span>
-          <span>DIRECT ATTRIBUTION FUNNELS</span>
+          <span>PAID ADVERTISING</span>
           <span>•</span>
-          <span className="text-secondary">PAID ADVANTAGE+ SCALING</span>
+          <span className="text-secondary">DIRECT AD SPEND — ZERO MARKUP</span>
           <span>•</span>
-          <span>CREATIVE VECTOR TESTING</span>
+          <span>CREATIVE TESTING</span>
           <span>•</span>
-          <span className="text-primary-container">ZERO FORGETTABLE CONTENT</span>
+          <span className="text-primary-container">MEASURABLE GROWTH</span>
           <span>•</span>
           <span className="flex items-center gap-2">
             <span className="w-2 h-2 bg-primary-container animate-ping"></span>
-            SHORT-FORM CINEMA
+            SHORT-FORM REELS
           </span>
           <span>•</span>
-          <span className="text-primary-container">ALGORITHMIC HOOK PACING</span>
+          <span className="text-primary-container">SOCIAL MEDIA MANAGEMENT</span>
           <span>•</span>
-          <span>DIRECT ATTRIBUTION FUNNELS</span>
+          <span>PAID ADVERTISING</span>
           <span>•</span>
-          <span className="text-secondary">PAID ADVANTAGE+ SCALING</span>
+          <span className="text-secondary">DIRECT AD SPEND — ZERO MARKUP</span>
           <span>•</span>
-          <span>CREATIVE VECTOR TESTING</span>
+          <span>CREATIVE TESTING</span>
           <span>•</span>
-          <span className="text-primary-container">ZERO FORGETTABLE CONTENT</span>
+          <span className="text-primary-container">MEASURABLE GROWTH</span>
         </div>
       </div>
 
@@ -44,14 +44,14 @@ export default function ServicesArsenal() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
           <div>
             <span className="font-label-technical text-xs text-primary-container uppercase tracking-widest">
-              [ CAPABILITIES // ARCHITECTURE ]
+              [ WHAT WE DO // CORE SERVICES ]
             </span>
             <h2 className="font-display-hero text-4xl sm:text-6xl uppercase font-black tracking-tight text-white mt-2">
-              THE ARSENAL.
+              OUR SERVICES.
             </h2>
           </div>
           <p className="font-body-md text-on-surface-variant max-w-md">
-            No bloated agency fluff. Four specialized disciplines synchronized to capture attention and extract revenue.
+            Four focused disciplines engineered to build your social presence, command attention, and drive measurable client acquisition.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function ServicesArsenal() {
               </p>
 
               <div className="flex items-center gap-2 text-primary-container font-label-technical text-xs uppercase font-bold group-hover:translate-x-2 transition-transform">
-                <span>EXPLORE ARCHITECTURE</span>
+                <span>VIEW DELIVERABLES</span>
                 <span>→</span>
               </div>
             </Link>

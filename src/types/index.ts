@@ -32,6 +32,11 @@ export interface CaseStudy {
   kpiFramework: MetricTarget[];
   trajectorySvgPath?: string;
   gallery: MediaItem[];
+  objective?: string;
+  targetAudience?: string;
+  creativeIdea?: string;
+  contentStrategy?: string;
+  paidMediaStrategy?: string;
 }
 
 export interface ServiceCategory {

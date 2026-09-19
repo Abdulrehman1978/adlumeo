@@ -12,9 +12,9 @@ const steps = [
   {
     number: "02",
     title: "STRATEGY CALL",
-    subtitle: "15-Minute Discovery Session",
+    subtitle: "Discovery & Strategy Call",
     description:
-      "We schedule a short call to understand your goals, audience, and commercial priorities. No hard sales pitch — just a focused conversation to see if we're a good fit.",
+      "We schedule a focused call to understand your goals, audience, and commercial priorities. No hard sales pitch — just an honest conversation to see if we're a good fit.",
     accentColor: "white" as const,
   },
   {
@@ -22,7 +22,7 @@ const steps = [
     title: "CLEAR PROPOSAL",
     subtitle: "Scope, Deliverables & Pricing",
     description:
-      "You receive a written proposal outlining exactly what we'll deliver, on what timeline, and at what fixed monthly cost — with no hidden fees or percentage markups on ad spend.",
+      "You receive a written proposal outlining exactly what we'll deliver, on what timeline, with clear scope and pricing — with no hidden fees or percentage markups on ad spend.",
     accentColor: "lime" as const,
   },
   {
@@ -54,7 +54,7 @@ const steps = [
     title: "MEASURE & IMPROVE",
     subtitle: "Monthly Reporting & Ongoing Refinement",
     description:
-      "Every month you receive a clear performance report covering reach, engagement, lead enquiries, and paid ROAS. We use these insights to improve what gets created next.",
+      "Every month you receive a clear performance report covering reach, engagement, lead enquiries, and paid media returns where applicable. We use these insights to improve what gets created next.",
     accentColor: "lime" as const,
   },
 ];

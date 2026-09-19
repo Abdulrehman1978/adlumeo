@@ -3,15 +3,17 @@ import AuditForm from "@/components/forms/AuditForm";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Free Social Growth Audit // Strategic Teardown",
+  title: "Free Social Growth Audit | ADLUMEO",
   description:
-    "Claim your free, customized social media growth audit. We diagnose hook drop-off leaks, audience reach bottlenecks, and ROAS multipliers.",
+    "Request a free review of your social presence, content strategy and growth opportunities. Clear, actionable feedback with zero pushy sales pitches.",
 };
 
 export default function FreeAuditPage() {
-  const whatsappUrl = siteConfig.contact.whatsapp
+  const hasWhatsapp = Boolean(siteConfig.contact.whatsapp);
+  const hasEmail = Boolean(siteConfig.contact.email);
+  const whatsappUrl = hasWhatsapp
     ? `https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, "")}`
-    : "#";
+    : "";
 
   return (
     <main className="w-full min-h-screen bg-background pt-36 pb-24 px-margin-mobile md:px-margin">
@@ -58,33 +60,39 @@ export default function FreeAuditPage() {
             </div>
 
             {/* Direct Escalation */}
-            <div className="p-8 bg-surface-container-high border border-white/10 flex flex-col gap-4 font-label-technical">
-              <span className="text-xs uppercase text-on-surface-variant font-bold tracking-wider">
-                PREFER DIRECT COMMUNICATION?
-              </span>
-              <p className="font-body-sm text-sm text-on-surface-variant font-sans">
-                If you have an upcoming product launch or want to connect immediately:
-              </p>
+            {(hasWhatsapp || hasEmail) && (
+              <div className="p-8 bg-surface-container-high border border-white/10 flex flex-col gap-4 font-label-technical">
+                <span className="text-xs uppercase text-on-surface-variant font-bold tracking-wider">
+                  PREFER DIRECT COMMUNICATION?
+                </span>
+                <p className="font-body-sm text-sm text-on-surface-variant font-sans">
+                  If you have an upcoming product launch or want to connect immediately:
+                </p>
 
-              <div className="flex flex-col gap-3 mt-2">
-                <a
-                  href={whatsappUrl}
-                  target={siteConfig.contact.whatsapp ? "_blank" : undefined}
-                  rel={siteConfig.contact.whatsapp ? "noopener noreferrer" : undefined}
-                  className="p-4 bg-black text-white hover:text-primary-container border border-white/15 flex items-center justify-between transition-colors"
-                >
-                  <span className="text-xs font-bold uppercase">Chat on WhatsApp</span>
-                  <span>💬</span>
-                </a>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="p-4 bg-black text-white hover:text-primary-container border border-white/15 flex items-center justify-between transition-colors"
-                >
-                  <span className="text-xs font-bold uppercase">{siteConfig.contact.email}</span>
-                  <span>✉️</span>
-                </a>
+                <div className="flex flex-col gap-3 mt-2">
+                  {hasWhatsapp && (
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 bg-black text-white hover:text-primary-container border border-white/15 flex items-center justify-between transition-colors"
+                    >
+                      <span className="text-xs font-bold uppercase">Chat on WhatsApp</span>
+                      <span>💬</span>
+                    </a>
+                  )}
+                  {hasEmail && (
+                    <a
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className="p-4 bg-black text-white hover:text-primary-container border border-white/15 flex items-center justify-between transition-colors"
+                    >
+                      <span className="text-xs font-bold uppercase">{siteConfig.contact.email}</span>
+                      <span>✉️</span>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

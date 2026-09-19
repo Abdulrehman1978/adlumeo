@@ -36,7 +36,7 @@ export default function ServicesPage() {
               <div className="lg:w-1/2 flex flex-col justify-between">
                 <div>
                   <span className="font-label-technical text-2xl font-bold text-primary-container block mb-2">
-                    {svc.number} // CAPABILITY
+                    {`${svc.number} // CAPABILITY`}
                   </span>
                   <h2 className="font-display-hero text-3xl sm:text-5xl uppercase font-black text-white">
                     {svc.title}

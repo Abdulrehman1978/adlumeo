@@ -18,16 +18,16 @@ const steps = [
   {
     number: "02",
     title: "STRATEGY CALL",
-    subtitle: "15-Minute Discovery Session",
+    subtitle: "Discovery & Strategy Call",
     description:
       "We schedule a focused call to understand your goals, target audience, and commercial priorities. No pressure or sales games — just an honest conversation to see if we're a mutual fit.",
   },
   {
     number: "03",
     title: "CLEAR PROPOSAL",
-    subtitle: "Scope, Deliverables & Fixed Pricing",
+    subtitle: "Scope, Deliverables & Clear Pricing",
     description:
-      "You receive a written proposal outlining exactly what we'll deliver, on what timeline, and at what fixed monthly cost. No hidden agency fees and zero markups on media spend.",
+      "You receive a written proposal outlining exactly what we'll deliver, on what timeline, with clear scope and pricing. No hidden agency fees and zero markups on media spend.",
   },
   {
     number: "04",
@@ -55,7 +55,7 @@ const steps = [
     title: "MEASURE & IMPROVE",
     subtitle: "Monthly Reporting & Ongoing Refinement",
     description:
-      "Every month you receive a clear performance report covering reach, engagement, lead enquiries, and paid ROAS. We use these insights to systematically improve what gets created next.",
+      "Every month you receive a clear performance report covering reach, engagement, lead enquiries, and paid media returns where applicable. We use these insights to systematically improve what gets created next.",
   },
 ];
 

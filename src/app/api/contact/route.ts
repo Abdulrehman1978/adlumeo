@@ -3,11 +3,15 @@ import { db } from "@/lib/db";
 import { contactFormSchema } from "@/lib/validation";
 import { rateLimiter } from "@/lib/rate-limit";
 import { sendLeadNotifications } from "@/lib/email";
+import { validateServerEnv } from "@/lib/env";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
+    // 0. Validate server environment (logs warnings/errors gracefully)
+    validateServerEnv();
+
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
       req.headers.get("x-real-ip") ||
@@ -54,24 +58,56 @@ export async function POST(req: NextRequest) {
         message: data.message,
         source: "contact",
         status: "new",
+        notificationInternalStatus: "pending",
+        notificationClientStatus: "pending",
       },
     });
 
-    sendLeadNotifications({
-      type: "contact",
-      fullName: data.name,
-      businessName: data.company || data.name,
-      email: data.email,
-      phone: data.phone,
-      marketingGoal: data.service,
-      budgetRange: data.budget,
-      message: data.message,
-    }).catch((err) => console.error("[CONTACT NOTIFICATION BACKGROUND ERROR]", err));
+    // Await transactional email notifications & update tracking
+    try {
+      const notificationResult = await sendLeadNotifications({
+        type: "contact",
+        fullName: data.name,
+        businessName: data.company || data.name,
+        email: data.email,
+        phone: data.phone,
+        marketingGoal: data.service,
+        budgetRange: data.budget,
+        message: data.message,
+      });
+
+      if (notificationResult) {
+        const internalStatus = notificationResult.internal.success
+          ? "sent"
+          : notificationResult.internal.error === "EMAIL_NOT_CONFIGURED"
+          ? "skipped"
+          : "failed";
+
+        const clientStatus = notificationResult.client.success
+          ? "sent"
+          : notificationResult.client.error === "EMAIL_NOT_CONFIGURED"
+          ? "skipped"
+          : "failed";
+
+        await db.lead.update({
+          where: { id: lead.id },
+          data: {
+            notificationInternalStatus: internalStatus,
+            notificationInternalError: notificationResult.internal.error || null,
+            notificationClientStatus: clientStatus,
+            notificationClientError: notificationResult.client.error || null,
+            notificationAttemptedAt: new Date(),
+          },
+        });
+      }
+    } catch (notifErr) {
+      console.error("[CONTACT NOTIFICATION DISPATCH ERROR]", notifErr);
+    }
 
     return NextResponse.json(
       {
         success: true,
-        message: "Message received. Our studio desk will contact you shortly.",
+        message: "Message received. We will contact you shortly.",
         id: lead.id,
       },
       { status: 201 }
@@ -79,7 +115,7 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     console.error("[API CONTACT ERROR]", error);
     return NextResponse.json(
-      { error: "An unexpected error occurred while transmitting your message. Please try again." },
+      { error: "An unexpected error occurred while submitting your message. Please try again." },
       { status: 500 }
     );
   }

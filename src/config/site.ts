@@ -1,3 +1,41 @@
+/**
+ * ADLUMEO Site Configuration
+ *
+ * All public-facing values are driven from environment variables.
+ * No hardcoded domains, emails, or contact channels.
+ *
+ * Required before public outreach:
+ *   NEXT_PUBLIC_SITE_URL  — the deployed production URL (e.g. https://adlumeo.vercel.app)
+ *   NEXT_PUBLIC_CONTACT_EMAIL — real business email address
+ */
+
+const isDev = process.env.NODE_ENV === "development";
+
+// In development, fall back to localhost. In production, require NEXT_PUBLIC_SITE_URL.
+// Vercel injects NEXT_PUBLIC_VERCEL_URL automatically — use it as a secondary fallback.
+const siteUrl = (() => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  }
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
+  if (isDev) {
+    return "http://localhost:3000";
+  }
+  // Return empty string so that downstream consumers can detect misconfiguration.
+  // metadataBase in Next.js accepts a URL — use localhost as last resort to avoid
+  // a build crash, but log a warning.
+  if (typeof console !== "undefined") {
+    console.warn(
+      "[ADLUMEO] NEXT_PUBLIC_SITE_URL is not configured. " +
+        "Canonical URLs, OG metadata and sitemap will be incorrect in production. " +
+        "Set NEXT_PUBLIC_SITE_URL in your Vercel environment variables."
+    );
+  }
+  return "http://localhost:3000";
+})();
+
 export const siteConfig = {
   name: "ADLUMEO",
   legalName: "ADLUMEO",
@@ -5,18 +43,20 @@ export const siteConfig = {
   subline: "Social • Content • Paid Media",
   description:
     "Social media management, content creation, and paid advertising agency designed to turn attention into measurable growth.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://adlumeo.com",
-  
-  // Real configurable business channels
+  url: siteUrl,
+
+  // Studio status — set NEXT_PUBLIC_ACCEPTING_CLIENTS=true when actively taking briefs
+  acceptingClients: process.env.NEXT_PUBLIC_ACCEPTING_CLIENTS === "true",
+
+  // Contact channels — only rendered when genuinely configured
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@adlumeo.com",
-    deskEmail: process.env.NEXT_PUBLIC_DESK_EMAIL || "",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
     phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "",
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
     bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL || "",
   },
 
-  // Founder profile (empty by default — only rendered when genuine data is configured)
+  // Founder profile — empty by default; rendered only when genuine data is configured
   founder: {
     name: process.env.NEXT_PUBLIC_FOUNDER_NAME || "",
     role: process.env.NEXT_PUBLIC_FOUNDER_ROLE || "",
@@ -24,7 +64,7 @@ export const siteConfig = {
     bio: process.env.NEXT_PUBLIC_FOUNDER_BIO || "",
   },
 
-  // Social profiles (configured or clean disabled state)
+  // Social profiles — only rendered when configured
   social: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
     linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "",

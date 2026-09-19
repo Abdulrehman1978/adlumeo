@@ -1,3 +1,6 @@
+import { serverEnv } from "@/lib/env";
+import { siteConfig } from "@/config/site";
+
 export interface EmailPayload {
   to: string;
   subject: string;
@@ -5,58 +8,94 @@ export interface EmailPayload {
   html?: string;
 }
 
-export interface IEmailService {
-  send(payload: EmailPayload): Promise<{ success: boolean; messageId?: string; error?: string }>;
-}
+export type EmailSendResult = {
+  success: boolean;
+  messageId?: string;
+  error?: string;
+};
 
-class TransactionalEmailService implements IEmailService {
-  private apiKey = process.env.EMAIL_API_KEY;
-  private from = process.env.EMAIL_FROM || "ADLUMEO <notifications@adlumeo.com>";
+// ─────────────────────────────────────────────────────────────────────────────
+// Core Email Dispatcher
+// ─────────────────────────────────────────────────────────────────────────────
 
-  async send(payload: EmailPayload): Promise<{ success: boolean; messageId?: string; error?: string }> {
-    // In local development or if no API key is set, safely log to console
-    if (!this.apiKey) {
-      console.log(`[EMAIL DISPATCH MOCK] To: ${payload.to} | Subject: ${payload.subject}`);
-      console.log(`[EMAIL BODY]:\n${payload.text}\n---`);
-      return { success: true, messageId: `mock-${Date.now()}` };
+async function dispatchEmail(payload: EmailPayload): Promise<EmailSendResult> {
+  const apiKey = serverEnv.emailApiKey;
+  const from = serverEnv.emailFrom;
+  const isProduction = serverEnv.isProduction;
+
+  // Development mock: no API key present
+  if (!apiKey) {
+    if (isProduction) {
+      // Production with missing credentials: do NOT fake success
+      const error =
+        "EMAIL_NOT_CONFIGURED: EMAIL_API_KEY is absent in production. " +
+        `Email to ${payload.to} (subject: "${payload.subject}") was NOT sent. ` +
+        "Lead has been stored in the database.";
+      console.error("[ADLUMEO][EMAIL]", error);
+      return { success: false, error: "EMAIL_NOT_CONFIGURED" };
     }
 
-    try {
-      // Standard HTTP dispatch (e.g. Resend API compatible)
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: this.from,
-          to: payload.to,
-          subject: payload.subject,
-          text: payload.text,
-          html: payload.html || payload.text,
-        }),
-      });
+    // Development: safe mock
+    console.log(`[ADLUMEO][EMAIL MOCK] To: ${payload.to} | Subject: ${payload.subject}`);
+    console.log(`[ADLUMEO][EMAIL BODY]:\n${payload.text}\n---`);
+    return { success: true, messageId: `mock-${Date.now()}` };
+  }
 
-      if (!res.ok) {
-        const errText = await res.text();
-        console.error("[EMAIL ERROR]", errText);
-        return { success: false, error: errText };
-      }
+  if (!from) {
+    const error = "EMAIL_NOT_CONFIGURED: EMAIL_FROM is not set. Cannot dispatch email.";
+    console.error("[ADLUMEO][EMAIL]", error);
+    return { success: false, error: "EMAIL_FROM_NOT_CONFIGURED" };
+  }
 
-      const data = await res.json();
-      return { success: true, messageId: data.id };
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Unknown email transmission error";
-      console.error("[EMAIL EXCEPTION]", message);
-      return { success: false, error: message };
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: payload.to,
+        subject: payload.subject,
+        text: payload.text,
+        html: payload.html || payload.text,
+      }),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error("[ADLUMEO][EMAIL ERROR]", errText);
+      return { success: false, error: errText };
     }
+
+    const data = await res.json();
+    return { success: true, messageId: data.id };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Unknown email transmission error";
+    console.error("[ADLUMEO][EMAIL EXCEPTION]", message);
+    return { success: false, error: message };
   }
 }
 
-export const emailService = new TransactionalEmailService();
+// ─────────────────────────────────────────────────────────────────────────────
+// Notification Results
+// ─────────────────────────────────────────────────────────────────────────────
 
-// Notification helpers
+export type NotificationResult = {
+  /** Internal agency alert (sent to LEAD_NOTIFICATION_EMAIL) */
+  internal: EmailSendResult;
+  /** Client confirmation (sent to the form submitter) */
+  client: EmailSendResult;
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Lead Notification Orchestrator
+//
+// Each send is independent. Failure of one does not prevent the other.
+// Results are returned separately so the caller can track them on the Lead.
+// ─────────────────────────────────────────────────────────────────────────────
+
 export async function sendLeadNotifications({
   type,
   fullName,
@@ -77,19 +116,30 @@ export async function sendLeadNotifications({
   budgetRange?: string | null;
   marketingGoal?: string | null;
   message?: string | null;
-}) {
-  const agencyRecipient = process.env.LEAD_NOTIFICATION_EMAIL || "director@adlumeo.com";
+}): Promise<NotificationResult> {
+  const siteUrl = siteConfig.url;
 
-  // 1. Agency alert
-  const agencySubject =
-    type === "free_audit"
-      ? `[NEW AUDIT REQUEST] ${businessName} (${email})`
-      : `[NEW INQUIRY] ${fullName} from ${businessName}`;
+  // ── 1. Internal Agency Alert ────────────────────────────────────────────────
 
-  const agencyText = `
+  const agencyRecipient = serverEnv.leadNotificationEmail;
+  let internalResult: EmailSendResult;
+
+  if (!agencyRecipient) {
+    const warning =
+      "LEAD_NOTIFICATION_EMAIL is not configured. " +
+      `Internal alert for ${email} (${businessName}) was skipped. Lead is saved.`;
+    console.warn("[ADLUMEO][EMAIL]", warning);
+    internalResult = { success: false, error: "LEAD_NOTIFICATION_EMAIL_NOT_CONFIGURED" };
+  } else {
+    const agencySubject =
+      type === "free_audit"
+        ? `[NEW AUDIT REQUEST] ${businessName} (${email})`
+        : `[NEW ENQUIRY] ${fullName} from ${businessName}`;
+
+    const agencyText = `
 ADLUMEO Lead Notification
--------------------------
-Source: ${type === "free_audit" ? "Free Social Growth Audit" : "General Contact Inquiry"}
+─────────────────────────
+Source: ${type === "free_audit" ? "Free Social Growth Audit" : "General Contact Enquiry"}
 Contact: ${fullName}
 Business: ${businessName}
 Email: ${email}
@@ -99,49 +149,52 @@ Budget Range: ${budgetRange || "Not specified"}
 Marketing Goal: ${marketingGoal || "Not specified"}
 Message / Notes: ${message || "None"}
 Received At: ${new Date().toISOString()}
-  `.trim();
+    `.trim();
 
-  await emailService.send({
-    to: agencyRecipient,
-    subject: agencySubject,
-    text: agencyText,
-  });
+    internalResult = await dispatchEmail({
+      to: agencyRecipient,
+      subject: agencySubject,
+      text: agencyText,
+    });
+  }
 
-  // 2. Client receipt confirmation
+  // ── 2. Client Confirmation ──────────────────────────────────────────────────
+  // Attempted independently of the internal result above.
+
   const clientSubject =
     type === "free_audit"
       ? "ADLUMEO — Social Growth Audit Request Received"
-      : "ADLUMEO — Inquiry Received";
+      : "ADLUMEO — Enquiry Received";
 
   const clientText =
     type === "free_audit"
-      ? `
-Hello ${fullName || "there"},
+      ? `Hi ${fullName || "there"},
 
 Thanks for requesting an ADLUMEO Social Growth Audit for ${businessName}.
 
-We have received your profile details. Our creative and performance strategists will review your current presence, hook cadence, and positioning. We will be in touch using the contact details provided.
+We've received your details and will review the social presence and information you shared.
 
-Best regards,
-The ADLUMEO Team
-Attention into Growth.
-https://adlumeo.com
-      `.trim()
-      : `
-Hello ${fullName || "there"},
+We'll follow up using the contact details provided.
 
-Thank you for reaching out to ADLUMEO.
+— ADLUMEO
+${siteUrl}`.trim()
+      : `Hi ${fullName || "there"},
 
-We have received your message regarding ${businessName}. A member of our executive desk will review your brief and follow up with you directly.
+Thanks for reaching out to ADLUMEO.
 
-Best regards,
-The ADLUMEO Team
-https://adlumeo.com
-      `.trim();
+Your enquiry regarding ${businessName} has been received. We'll review the details and respond using the contact information you provided.
 
-  await emailService.send({
+— ADLUMEO
+${siteUrl}`.trim();
+
+  const clientResult = await dispatchEmail({
     to: email,
     subject: clientSubject,
     text: clientText,
   });
+
+  return {
+    internal: internalResult,
+    client: clientResult,
+  };
 }

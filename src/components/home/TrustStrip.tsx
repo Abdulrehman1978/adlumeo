@@ -45,8 +45,8 @@ export default function TrustStrip() {
           </div>
         </div>
 
-        {/* Three Trust Commitments */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-black/10 pt-10">
+        {/* Four Trust Commitments */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-black/10 pt-10">
           <div className="flex flex-col gap-3 p-6 border border-black/10 bg-white">
             <span className="font-label-technical text-xs uppercase font-bold text-primary-container tracking-widest">
               TRANSPARENT BILLING
@@ -55,7 +55,7 @@ export default function TrustStrip() {
               Zero Hidden Fees
             </h3>
             <p className="font-body-sm text-sm text-black/60 leading-relaxed">
-              Your ad spend goes directly to Meta and Google through your own accounts. ADLUMEO charges a fixed monthly fee for management — nothing else. You always know exactly where your money goes.
+              Your media spend goes directly to advertising platforms through your own accounts. ADLUMEO charges only for agreed creative and management scope — nothing else. You always know exactly where your money goes.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export default function TrustStrip() {
               CONTENT APPROVAL
             </span>
             <h3 className="font-headline-sm text-lg uppercase font-bold text-[#0C0D10]">
-              Nothing Goes Live Without Your Approval
+              Nothing Goes Live Without Sign-off
             </h3>
             <p className="font-body-sm text-sm text-black/60 leading-relaxed">
               Every piece of content is shared with you for review before publishing. You maintain full editorial control over your brand voice and visual identity throughout the partnership.
@@ -79,7 +79,19 @@ export default function TrustStrip() {
               Plain-English Monthly Reports
             </h3>
             <p className="font-body-sm text-sm text-black/60 leading-relaxed">
-              No vanity dashboards filled with confusing metrics. Each month you receive a clear breakdown of reach, engagement, lead enquiries, and paid campaign ROAS with honest commentary on what worked and what&apos;s being improved.
+              No vanity dashboards filled with confusing metrics. Each month you receive a clear breakdown of reach, engagement, lead enquiries, and paid performance where applicable, with honest commentary on what worked and what&apos;s being improved.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3 p-6 border border-black/10 bg-white">
+            <span className="font-label-technical text-xs uppercase font-bold text-primary-container tracking-widest">
+              ACCOUNT OWNERSHIP
+            </span>
+            <h3 className="font-headline-sm text-lg uppercase font-bold text-[#0C0D10]">
+              Your Accounts Stay Yours
+            </h3>
+            <p className="font-body-sm text-sm text-black/60 leading-relaxed">
+              Your business retains ownership of its social profiles, Meta Business Manager, Google Ads account and advertising billing. ADLUMEO receives only the permissions required to manage the agreed work.
             </p>
           </div>
         </div>

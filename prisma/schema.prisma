@@ -1,6 +1,22 @@
-// Prisma Schema for ADLUMEO
-// Local development default: sqlite
-// Production: Switch provider to "postgresql" for Supabase / PostgreSQL
+// ─────────────────────────────────────────────────────────────────────────────
+// ADLUMEO Prisma Schema
+//
+// LOCAL DEVELOPMENT:
+//   provider = "sqlite"
+//   DATABASE_URL = "file:./dev.db"
+//
+// PRODUCTION (REQUIRED — SQLite is NOT production-safe on Vercel):
+//   provider = "postgresql"
+//   DATABASE_URL = "postgresql://..." (Supabase / Neon / other managed PostgreSQL)
+//
+// To switch to production:
+//   1. Set DATABASE_URL to your PostgreSQL connection string in Vercel environment variables
+//   2. Change provider below to "postgresql"
+//   3. Run: npx prisma migrate deploy
+//   4. Verify leads persist across redeployments before accepting real client enquiries
+//
+// ⚠️  PRODUCTION LEAD CAPTURE IS BLOCKED until the above steps are complete.
+// ─────────────────────────────────────────────────────────────────────────────
 
 datasource db {
   provider = "sqlite"
@@ -14,6 +30,9 @@ generator client {
 model Lead {
   id            String   @id @default(uuid())
   createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Submitter information
   fullName      String
   businessName  String
   email         String
@@ -24,6 +43,16 @@ model Lead {
   marketingGoal String?
   budgetRange   String?
   message       String?
+
+  // Lead management
   source        String   @default("free_audit") // "free_audit" | "contact"
-  status        String   @default("new")
+  status        String   @default("new")        // "new" | "reviewed" | "replied" | "closed"
+
+  // Notification tracking — internal (agency) and client (submitter) tracked separately
+  // Values: "pending" | "sent" | "failed" | "skipped"
+  notificationInternalStatus  String   @default("pending")
+  notificationInternalError   String?
+  notificationClientStatus    String   @default("pending")
+  notificationClientError     String?
+  notificationAttemptedAt     DateTime?
 }

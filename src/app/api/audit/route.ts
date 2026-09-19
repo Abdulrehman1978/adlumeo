@@ -4,6 +4,8 @@ import { auditFormSchema } from "@/lib/validation";
 import { rateLimiter } from "@/lib/rate-limit";
 import { sendLeadNotifications } from "@/lib/email";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     // 1. Extract IP for rate limiting

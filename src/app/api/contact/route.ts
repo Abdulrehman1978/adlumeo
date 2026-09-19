@@ -4,6 +4,8 @@ import { contactFormSchema } from "@/lib/validation";
 import { rateLimiter } from "@/lib/rate-limit";
 import { sendLeadNotifications } from "@/lib/email";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const ip =
